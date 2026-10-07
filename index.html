@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#160630">
+<title>Organizador y presupuestador · Driven By People</title>
+<meta name="description" content="Propuesta de Driven By People: cotizaciones, facturación y seguimiento de clientes para distribuidores de cubiertas.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2226%2026%20364%20383%22%3E%3Cg%20transform%3D%22translate%28-332.037%20-110.026%29%22%3E%3Cpath%20d%3D%22M525.714%20437.755H508.321C491.205%20437.755%20477.329%20423.879%20477.329%20406.763V140H494.722C511.838%20140%20525.714%20153.876%20525.714%20170.993Z%22%20fill%3D%22%23661EDA%22/%3E%3Cpath%20d%3D%22M601.393%20514.674H584C566.884%20514.674%20553.008%20500.798%20553.008%20483.682V216.919H570.401C587.517%20216.919%20601.393%20230.795%20601.393%20247.912Z%22%20fill%3D%22%2318A7A0%22/%3E%3Cpath%20d%3D%22M627.627%20401.954C629.984%20398.687%20683.099%20322.402%20646.797%20242.75%20623.722%20192.118%20578.631%20171.094%20566.107%20165.751%20619.067%20150.892%20681.901%20192.157%20699.884%20252.028%20717.989%20312.303%20686.116%20382.472%20627.627%20401.954%22%20fill%3D%22%2318A7A0%22/%3E%3Cpath%20d%3D%22M452.373%20252.034C450.016%20255.301%20396.901%20331.586%20433.203%20411.238%20456.278%20461.87%20501.369%20482.894%20513.893%20488.237%20460.933%20503.096%20398.099%20461.831%20380.116%20401.96%20362.011%20341.685%20393.884%20271.516%20452.373%20252.034%22%20fill%3D%22%23661EDA%22/%3E%3Cpath%20d%3D%22M688.238%20461.327C688.238%20477.772%20674.907%20491.102%20658.463%20491.102%20642.018%20491.102%20628.687%20477.772%20628.687%20461.327%20628.687%20444.882%20642.018%20431.552%20658.463%20431.552%20674.907%20431.552%20688.238%20444.882%20688.238%20461.327%22%20fill%3D%22%2318A7A0%22/%3E%3Cpath%20d%3D%22M451.275%20199.551C451.275%20215.996%20437.944%20229.326%20421.5%20229.326%20405.055%20229.326%20391.724%20215.996%20391.724%20199.551%20391.724%20183.106%20405.055%20169.776%20421.5%20169.776%20437.944%20169.776%20451.275%20183.106%20451.275%20199.551%22%20fill%3D%22%23661EDA%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Smooch+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   Tokens
+   ========================================================= */
+:root{
+  --night:#160630; --deep:#320F6A; --violet:#661EDA; --lila:#9163EA;
+  --teal:#18A7A0; --teal-t:#118079; --aqua:#80DDD6; --snow:#F5F2FF; --mist:#E1E6FF;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --dur:900ms;
+  --display:'Smooch Sans','Arial Narrow',Impact,sans-serif;
+  --body:'Quicksand','Trebuchet MS',system-ui,sans-serif;
+  --gutter:20px; --header:60px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header);-webkit-text-size-adjust:100%}
+body{background:var(--night);color:var(--night);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--lila);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* =========================================================
+   Themes
+   ========================================================= */
+.night,.deep{color:var(--snow);--acc:var(--aqua);--acc-t:var(--aqua);--line:rgba(245,242,255,.14);--line-s:rgba(245,242,255,.32);--muted:rgba(245,242,255,.74);--kick:var(--lila);--lv:var(--snow);--lt:var(--aqua)}
+.night{background:var(--night)}
+.deep{background:var(--deep)}
+.snow,.mist{color:var(--night);--acc:var(--teal);--acc-t:var(--teal-t);--line:rgba(50,15,106,.13);--line-s:rgba(50,15,106,.3);--muted:rgba(22,6,48,.7);--kick:var(--violet);--lv:var(--violet);--lt:var(--teal)}
+.snow{background:var(--snow)}
+.mist{background:var(--mist)}
+
+/* =========================================================
+   Layout + type
+   ========================================================= */
+.sec{position:relative;padding:calc(var(--header) + 40px) var(--gutter) 88px;overflow:hidden}
+.wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto}
+.kicker{display:flex;align-items:center;gap:12px;font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--kick);margin-bottom:18px}
+.kicker::before{content:"";width:36px;height:2px;background:currentColor}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:.005em}
+h1{font-size:clamp(3.5rem,15.5vw,8rem);font-weight:800;line-height:.88}
+h2{font-size:clamp(2.75rem,11.5vw,6rem);font-weight:800;line-height:.9;text-wrap:balance}
+h3{font-size:clamp(1.9rem,7vw,2.5rem);font-weight:700;line-height:1}
+h4{font-size:1.6rem;font-weight:700;line-height:1}
+h1 em,h2 em{font-style:normal;color:var(--acc-t)}
+.lead{font-size:clamp(1.08rem,4.4vw,1.4rem);font-weight:500;line-height:1.5;color:var(--muted);max-width:40ch;margin-top:22px}
+.fl{display:block;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sec-head{margin-bottom:40px}
+
+/* =========================================================
+   Motion: one family
+   ========================================================= */
+.rv{opacity:0;transform:translateY(24px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);transition-delay:calc(var(--d,0) * 120ms)}
+.rv.in{opacity:1;transform:none}
+.draw{stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease);transition-delay:calc(var(--d,0) * 160ms)}
+.in .draw,.draw.in{stroke-dashoffset:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes flow{to{stroke-dashoffset:-20}}
+@keyframes floaty{50%{transform:translateY(8px)}}
+
+/* =========================================================
+   Header
+   ========================================================= */
+.hdr{position:fixed;inset:0 0 auto;z-index:60;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:0 var(--gutter);padding-top:env(safe-area-inset-top);background:rgba(22,6,48,.82);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
+  color:var(--snow);--lv:var(--snow);--lt:var(--aqua)}
+.hdr .brand{display:flex;align-items:center}
+.hdr .brand svg{height:30px;width:auto;display:block}
+.hdr nav{display:none;gap:26px;font-weight:600;font-size:.95rem}
+.hdr nav a{text-decoration:none;opacity:.78;transition:opacity .5s var(--ease)}
+.hdr nav a:hover{opacity:1}
+.hdr .bar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--aqua);transform-origin:0 50%;transform:scaleX(0)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font-weight:700;font-size:1rem;
+  background:var(--violet);color:#fff;text-decoration:none;white-space:nowrap;transition:background .5s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease)}
+.btn:hover{background:var(--lila);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px var(--line-s)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--lila);background:transparent}
+.btn.sm{min-height:40px;padding:0 18px;font-size:.92rem}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* =========================================================
+   1 · Hero
+   ========================================================= */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:calc(var(--header) + 28px);padding-bottom:64px}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(145,99,234,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(145,99,234,.09) 1px,transparent 1px);background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 70% 45%,#000 0%,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 70% 45%,#000 0%,transparent 75%)}
+.hero::after{content:"";position:absolute;z-index:0;width:120vmax;height:120vmax;right:-60vmax;top:-50vmax;background:radial-gradient(circle,rgba(102,30,218,.32),transparent 60%)}
+.hero-grid{display:grid;gap:36px;width:100%}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-weight:600;font-size:.9rem;color:var(--muted)}
+.hero .meta span+span::before{content:"·";margin-right:18px;opacity:.6}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.tire{display:block;width:min(80vw,400px);margin:0 auto;overflow:visible;--lv:var(--snow);--lt:var(--aqua)}
+.tire .spin{animation:spin 90s linear infinite}
+.tire .orbit{animation:spin 16s linear infinite}
+.tire circle,.tire path{fill:none}
+.t-out{stroke:rgba(145,99,234,.55);stroke-width:1.5}
+.t-tread{stroke:rgba(245,242,255,.2);stroke-width:20;stroke-dasharray:6 8;opacity:0;transition:opacity 2s var(--ease) .6s}
+.in .t-tread{opacity:1}
+.t-in{stroke:rgba(145,99,234,.55);stroke-width:1.5}
+.t-rim{stroke:rgba(245,242,255,.75);stroke-width:1.6}
+.t-rim2{stroke:rgba(245,242,255,.22);stroke-width:1;stroke-dasharray:2 6}
+.t-spk{stroke:rgba(245,242,255,.5);stroke-width:1.4;stroke-linecap:round}
+.t-hub{stroke:var(--lila);stroke-width:1.5}
+.t-arc{stroke:var(--aqua);stroke-width:2.5;stroke-linecap:round}
+.t-dot{fill:var(--aqua)!important}
+.t-mark{opacity:0;transition:opacity 1.6s var(--ease) 1s}
+.in .t-mark{opacity:1}
+.cue{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);display:none;flex-direction:column;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.cue i{width:1.5px;height:34px;background:linear-gradient(var(--aqua),transparent);animation:floaty 2.8s var(--ease) infinite}
+
+/* =========================================================
+   2 · Negocio
+   ========================================================= */
+.two{display:grid;gap:44px}
+.net{display:block;width:100%;max-width:440px;margin:0 auto;overflow:visible}
+.net .ln{fill:none;stroke:rgba(102,30,218,.32);stroke-width:1.5}
+.net .nd{fill:var(--snow);stroke:var(--violet);stroke-width:1.5}
+.net .nd-c{fill:var(--deep)}
+.net .ring{fill:none;stroke:var(--lila);stroke-width:1.2;stroke-dasharray:3 6;transform-box:fill-box;transform-origin:center;animation:spin 30s linear infinite}
+.net text{font-family:var(--body);font-weight:700;fill:var(--night)}
+.net .t-cap{font-size:11px;letter-spacing:.18em;fill:var(--violet)}
+.net .t-n{font-family:var(--display);font-size:20px;font-weight:800;fill:var(--violet);text-anchor:middle;dominant-baseline:central}
+.net .t-c{font-family:var(--display);font-size:26px;font-weight:800;fill:var(--snow);text-anchor:middle;dominant-baseline:central}
+.net .pulse{fill:var(--teal);opacity:0;transition:opacity 1s var(--ease) 2s}
+.net.in .pulse{opacity:1}
+.facts{list-style:none;margin-top:34px;border-top:1.5px solid var(--line)}
+.facts li{display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1.5px solid var(--line)}
+.facts .fl{color:var(--violet)}
+.facts p{font-weight:600;font-size:1.05rem;line-height:1.4}
+
+/* =========================================================
+   3 · Problema
+   ========================================================= */
+.chaos{display:block;width:100%;margin-top:34px;overflow:visible}
+.chaos .path{fill:none;stroke:var(--lila);stroke-width:2;stroke-linecap:round}
+.chaos .ghost{fill:none;stroke:rgba(245,242,255,.08);stroke-width:2}
+.chaos .nd{fill:var(--deep);stroke:var(--snow);stroke-width:1.6;opacity:0;transition:opacity .8s var(--ease);transition-delay:calc(var(--d,0)*350ms + 900ms)}
+.chaos.in .nd,.chaos.in .lb{opacity:1}
+.chaos .lb{font-family:var(--body);font-weight:700;font-size:15px;fill:var(--snow);opacity:0;transition:opacity .8s var(--ease);transition-delay:calc(var(--d,0)*350ms + 1000ms)}
+.chaos .lb.sm{font-size:12px;letter-spacing:.16em;fill:var(--lila)}
+.pains{list-style:none;border-top:1.5px solid var(--line)}
+.pains li{display:grid;grid-template-columns:54px 1fr;gap:12px;padding:22px 0;border-bottom:1.5px solid var(--line)}
+.pains i{font-style:normal;font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:.9;color:var(--lila)}
+.pains b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,6.6vw,2.3rem);line-height:1;margin-bottom:8px}
+.pains p{color:var(--muted);font-weight:500}
+
+/* =========================================================
+   4 · Solución
+   ========================================================= */
+.flow{list-style:none;position:relative;display:grid;gap:22px;margin:8px 0 56px;padding-left:4px}
+.flow::before,.flow::after{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:2px;border-radius:2px}
+.flow::before{background:var(--line)}
+.flow::after{background:var(--teal);transform-origin:50% 0;transform:scaleY(0);transition:transform 2.8s var(--ease) .4s}
+.flow.in::after{transform:scaleY(1)}
+.flow li{position:relative;z-index:1;display:flex;align-items:center;gap:18px}
+.flow .node{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--mist);box-shadow:inset 0 0 0 1.5px var(--line-s);
+  transition:background .7s var(--ease),box-shadow .7s var(--ease);transition-delay:calc(var(--i)*420ms + 500ms)}
+.flow .node svg{width:22px;height:22px;fill:none;stroke:var(--deep);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .7s var(--ease);transition-delay:inherit}
+.flow.in .node{background:var(--deep);box-shadow:inset 0 0 0 1.5px var(--deep)}
+.flow.in .node svg{stroke:var(--snow)}
+.flow b{display:block;font-family:var(--display);font-weight:700;font-size:1.65rem;line-height:1}
+.flow span{display:block;font-size:.92rem;font-weight:600;color:var(--muted)}
+.mods{display:grid;border-top:1.5px solid var(--line-s)}
+.mod{padding:28px 0;border-bottom:1.5px solid var(--line)}
+.mod .num{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:.1em;color:var(--violet)}
+.mod h3{margin:8px 0 12px;color:var(--deep)}
+.mod p{font-weight:500;color:var(--muted);max-width:40ch}
+.mod ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+.mod li{display:flex;gap:12px;align-items:baseline;font-weight:600;font-size:.98rem}
+.mod li::before{content:"";flex:none;width:14px;height:2px;background:var(--violet);transform:translateY(-4px)}
+
+/* =========================================================
+   Demo band
+   ========================================================= */
+.band{padding-top:72px;padding-bottom:72px}
+.band::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 120% at 100% 0%,rgba(102,30,218,.35),transparent 60%)}
+.band-links{display:grid;margin-top:34px;border-top:1.5px solid var(--line)}
+.band-links a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;border-bottom:1.5px solid var(--line);text-decoration:none}
+.band-links a b{font-family:var(--display);font-weight:700;font-size:clamp(2rem,8vw,2.8rem);line-height:1}
+.band-links a small{display:block;font-weight:600;color:var(--muted);font-size:.95rem;margin-top:4px}
+.band-links a svg{flex:none;width:28px;height:28px;fill:none;stroke:var(--aqua);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .6s var(--ease)}
+.band-links a:hover svg{transform:translateX(6px)}
+.band .note{margin-top:22px;font-size:.92rem;font-weight:600;color:var(--muted)}
+
+/* =========================================================
+   5 · Cotizador
+   ========================================================= */
+.qz{display:grid;gap:44px;align-items:start}
+.grp{padding:22px 0 26px;border-top:1.5px solid var(--line-s)}
+.grp-h{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.grp-h i{font-style:normal;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:.08em;color:var(--violet)}
+.grp-h h3{font-size:1.75rem;color:var(--deep)}
+.fld{display:block;margin-bottom:20px}
+.fld:last-child{margin-bottom:0}
+.fld .fl{margin-bottom:8px;display:flex;justify-content:space-between;gap:10px}
+.fld .fl output{color:var(--deep);letter-spacing:0;font-size:.95rem;text-transform:none}
+.row2{display:grid;gap:20px;margin-bottom:20px}
+select{width:100%;min-height:48px;padding:10px 34px 10px 0;border:0;border-bottom:1.5px solid var(--line-s);border-radius:0;background:transparent;font-weight:600;font-size:16px;-webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23661EDA' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 4px center;background-size:18px;transition:border-color .5s var(--ease)}
+select:focus{outline:none;border-bottom-color:var(--violet)}
+.night select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2380DDD6' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+.night option{background:var(--night);color:var(--snow)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:32px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:3px;background:linear-gradient(90deg,var(--violet) var(--p,50%),var(--line-s) var(--p,50%))}
+input[type=range]::-moz-range-track{height:3px;border-radius:3px;background:var(--line-s)}
+input[type=range]::-moz-range-progress{height:3px;border-radius:3px;background:var(--violet)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-10.5px;border-radius:50%;background:var(--snow);border:2.5px solid var(--violet);box-shadow:0 4px 14px -4px rgba(102,30,218,.6);transition:transform .4s var(--ease)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--snow);border:2.5px solid var(--violet)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.15)}
+.stepper{display:grid;grid-template-columns:48px 72px 48px 1fr;gap:10px;align-items:center}
+.stepper button{width:48px;height:48px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line-s);font-size:1.5rem;font-weight:600;line-height:1;color:var(--deep);transition:box-shadow .4s var(--ease),background .4s var(--ease)}
+.stepper button:hover{box-shadow:inset 0 0 0 1.5px var(--violet)}
+.stepper output{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;text-align:center;color:var(--deep)}
+.hint{font-size:.92rem;font-weight:500;color:var(--muted);margin:-6px 0 14px}
+.hint b{color:var(--deep)}
+.prov{display:grid}
+.prov .ph,.prov label{display:grid;grid-template-columns:24px minmax(0,1fr) 66px 54px 80px;gap:6px;align-items:center}
+.prov .ph{padding-bottom:8px;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.prov .ph span:nth-child(n+3),.prov label span:nth-child(n+4){text-align:right}
+.prov label{position:relative;min-height:56px;padding:8px 0;border-top:1.5px solid var(--line);cursor:pointer;font-size:.9rem;font-weight:600;font-variant-numeric:tabular-nums;transition:color .5s var(--ease)}
+.prov label:last-child{border-bottom:1.5px solid var(--line)}
+.prov input{position:absolute;opacity:0;pointer-events:none}
+.prov .rd{width:20px;height:20px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line-s);display:grid;place-items:center;transition:box-shadow .4s var(--ease)}
+.prov .rd::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--violet);transform:scale(0);transition:transform .4s var(--ease)}
+.prov input:checked+.rd{box-shadow:inset 0 0 0 2px var(--violet)}
+.prov input:checked+.rd::after{transform:scale(1)}
+.prov input:focus-visible+.rd{outline:2px solid var(--lila);outline-offset:3px}
+.prov .pn{line-height:1.2}
+.prov .pn small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.06em;color:var(--teal-t);text-transform:uppercase}
+.prov .pl{font-weight:700;color:var(--deep)}
+.prov-tip{display:none;margin-top:12px;font-size:.9rem;font-weight:600;color:var(--deep);gap:10px;align-items:flex-start}
+.prov-tip.on{display:flex}
+.prov-tip svg{flex:none;width:18px;height:18px;margin-top:2px;fill:none;stroke:var(--violet);stroke-width:2;stroke-linecap:round}
+.seg{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line-s);width:100%}
+.seg button{min-height:44px;padding:6px 10px;border-radius:12px;font-weight:700;font-size:.92rem;line-height:1.15;transition:background .5s var(--ease),color .5s var(--ease)}
+.seg button small{display:block;font-size:.72rem;font-weight:600;opacity:.75}
+.seg button.on{background:var(--deep);color:var(--snow)}
+.seg.g4{grid-auto-flow:row;grid-template-columns:1fr 1fr}
+.switch{display:flex;align-items:center;gap:14px;font-weight:700;cursor:pointer;min-height:44px}
+.switch input{position:absolute;opacity:0}
+.switch .sw{position:relative;width:48px;height:28px;border-radius:999px;background:var(--line-s);transition:background .5s var(--ease)}
+.switch .sw::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .5s var(--ease)}
+.switch input:checked+.sw{background:var(--violet)}
+.switch input:checked+.sw::after{transform:translateX(20px)}
+.switch input:focus-visible+.sw{outline:2px solid var(--lila);outline-offset:3px}
+
+.qout{border-top:3px solid var(--deep);padding-top:24px}
+.qout .big{font-family:var(--display);font-weight:800;font-size:clamp(3.6rem,17vw,5.6rem);line-height:.9;color:var(--acc-t);margin-top:6px;font-variant-numeric:tabular-nums}
+.qout .sub{font-weight:600;color:var(--muted);margin-top:8px}
+.qout .sub b{color:var(--deep)}
+.mid{display:grid;grid-template-columns:minmax(150px,200px) 1fr;gap:18px;align-items:center;margin:26px 0 8px;padding:18px 0;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.gauge{width:100%;display:block;overflow:visible}
+.gauge path{fill:none;stroke-linecap:round}
+.g-track{stroke:var(--mist);stroke-width:14}
+.g-fill{stroke:var(--violet);stroke-width:14;stroke-dasharray:0 100;transition:stroke-dasharray 1s var(--ease),stroke .6s var(--ease)}
+.g-fill.low{stroke:var(--lila)}
+.g-tick{stroke:var(--snow);stroke-width:2}
+.g-val{font-family:var(--display);font-weight:800;font-size:40px;fill:var(--deep);text-anchor:middle}
+.g-lbl{font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.12em;fill:var(--muted);text-anchor:middle;text-transform:uppercase}
+.g-end{font-family:var(--body);font-weight:700;font-size:10px;fill:var(--muted);text-anchor:middle}
+.mets{display:grid;gap:12px}
+.mets dt{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mets dd{font-family:var(--display);font-weight:700;font-size:1.75rem;line-height:1;color:var(--deep);font-variant-numeric:tabular-nums}
+.wf{margin-top:24px}
+.wf h4{color:var(--deep);margin-bottom:6px}
+.wf-row{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.wf-row .l{font-weight:600;font-size:.95rem}
+.wf-row .v{font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums;text-align:right}
+.wf-row .t{grid-column:1/-1;position:relative;height:10px}
+.wf-row .t::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.wf-row .t i{position:absolute;top:0;height:100%;border-radius:3px;background:var(--lila);transition:left 1s var(--ease),width 1s var(--ease)}
+.wf-row.c1 .t i{background:var(--deep)}
+.wf-row.c2 .t i{background:var(--violet)}
+.wf-row.c3 .t i{background:var(--lila)}
+.wf-row.cg .t i{background:var(--teal)}
+.wf-row.cn .t i{background:var(--lila);opacity:.45}
+.wf-row.sum{border-bottom:1.5px solid var(--line-s)}
+.wf-row.sum .l,.wf-row.sum .v{font-weight:700;color:var(--deep)}
+.wf-row.sum .t i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--deep)}
+.wf-row.tot .t i{background:var(--deep)}
+.wf .info{font-size:.85rem;font-weight:600;color:var(--muted);margin-top:10px}
+.alert{display:none;gap:10px;align-items:flex-start;margin-top:18px;padding:12px 0 12px 14px;border-left:3px solid var(--violet);font-weight:700;color:var(--deep)}
+.alert.on{display:flex}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.acts .btn{flex:1 1 180px}
+.msg{margin-top:16px;border-top:1.5px solid var(--line)}
+.msg summary{cursor:pointer;padding:14px 0;font-weight:700;color:var(--deep);list-style:none;display:flex;justify-content:space-between}
+.msg summary::-webkit-details-marker{display:none}
+.msg summary::after{content:"+";font-size:1.3rem;line-height:1;transition:transform .5s var(--ease)}
+.msg[open] summary::after{transform:rotate(45deg)}
+.msg pre{white-space:pre-wrap;font-family:var(--body);font-weight:500;font-size:.95rem;line-height:1.55;padding:0 0 8px 14px;border-left:3px solid var(--teal)}
+
+.qbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;gap:16px;padding:10px 10px 10px 18px;border-radius:20px;
+  background:rgba(22,6,48,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--snow);
+  transform:translateY(140%);transition:transform .7s var(--ease)}
+.qbar.on{transform:none}
+.qbar div{display:grid}
+.qbar .fl{color:rgba(245,242,255,.7);font-size:.65rem}
+.qbar b{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1}
+.qbar b.acc{color:var(--aqua)}
+.qbar .btn{margin-left:auto}
+
+/* =========================================================
+   6 · Rentabilidad
+   ========================================================= */
+#rentabilidad::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 0% 0%,rgba(102,30,218,.28),transparent 60%)}
+.filters{display:grid;gap:18px;margin-bottom:12px}
+.filters .seg button.on{background:var(--violet)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;min-height:8px;margin-bottom:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 8px 0 14px;border-radius:999px;background:rgba(145,99,234,.22);font-weight:700;font-size:.9rem;opacity:0;transform:translateY(6px);animation:chipIn .6s var(--ease) forwards}
+.chip button{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:1rem;background:rgba(245,242,255,.12)}
+@keyframes chipIn{to{opacity:1;transform:none}}
+.kpis{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--line);margin:14px 0 8px}
+.kpi{padding:18px 0 18px;border-bottom:1.5px solid var(--line)}
+.kpi:nth-child(odd){padding-right:14px;border-right:1.5px solid var(--line)}
+.kpi:nth-child(even){padding-left:18px}
+.kpi b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,10vw,3.4rem);line-height:1;margin-top:6px;font-variant-numeric:tabular-nums}
+.kpi.acc b{color:var(--aqua)}
+.charts{display:grid;gap:0}
+.ch{padding:26px 0 30px;border-bottom:1.5px solid var(--line)}
+.ch-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.ch-h h4{font-size:1.75rem}
+.ch-n{font-size:.82rem;font-weight:600;color:var(--muted)}
+.hb{position:relative;transition:height .8s var(--ease)}
+.hr{position:absolute;left:0;right:0;top:0;height:50px;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 8px;gap:6px 12px;align-content:center;text-align:left;
+  transition:transform .9s var(--ease),opacity .6s var(--ease)}
+button.hr{cursor:pointer}
+.hr .l{font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hr .v{font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums}
+.hr .t{grid-column:1/-1;position:relative;border-radius:4px;background:rgba(245,242,255,.07);overflow:hidden}
+.hr .t i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:var(--lila);transition:width 1s var(--ease),background .6s var(--ease)}
+.hr.top .t i{background:var(--aqua)}
+.hr.dim{opacity:.38}
+.hr.sel .t i{background:var(--aqua)}
+.hr:hover .l{text-decoration:underline;text-underline-offset:3px}
+.empty{padding:24px 0;font-weight:600;color:var(--muted)}
+.svgc{display:block;width:100%;height:auto;overflow:visible}
+.svgc text{font-family:var(--body);font-weight:600;fill:rgba(245,242,255,.66);font-size:12px}
+.svgc .ax{stroke:rgba(245,242,255,.16);stroke-width:1}
+.svgc .q{stroke:rgba(245,242,255,.3);stroke-width:1;stroke-dasharray:4 5}
+.svgc .ql{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;fill:rgba(145,99,234,.95)}
+.dot{cursor:pointer;transition:transform 1s var(--ease),opacity .6s var(--ease)}
+.dot circle{fill:rgba(145,99,234,.35);stroke:var(--lila);stroke-width:1.5;transition:fill .6s var(--ease),stroke .6s var(--ease),r 1s var(--ease)}
+.dot.top circle,.dot.sel circle{fill:rgba(128,221,214,.3);stroke:var(--aqua)}
+.dot.dim{opacity:.3}
+.dot text{font-size:11.5px;font-weight:700;fill:var(--snow)!important;pointer-events:none}
+.col rect.b{fill:var(--lila);transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform 1s var(--ease),fill .6s var(--ease)}
+.col.top rect.b{fill:var(--aqua)}
+.col.part rect.b{fill-opacity:.45}
+.col text.vv{fill:var(--snow)!important;font-weight:700;transition:transform 1s var(--ease)}
+.foot-note{margin-top:22px;font-size:.9rem;font-weight:600;color:var(--muted)}
+
+/* =========================================================
+   7 · Cierre
+   ========================================================= */
+.steps{list-style:none;position:relative;display:grid;gap:30px;margin:44px 0 64px;padding-left:66px}
+.steps::before{content:"";position:absolute;left:23px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.steps::after{content:"";position:absolute;left:23px;top:8px;bottom:8px;width:2px;background:var(--violet);transform-origin:50% 0;transform:scaleY(0);transition:transform 2.4s var(--ease) .3s}
+.steps.in::after{transform:scaleY(1)}
+.steps li{position:relative;z-index:1}
+.steps::before,.steps::after{z-index:0}
+.steps .n{position:absolute;left:-66px;top:-4px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--snow);box-shadow:inset 0 0 0 2px var(--violet);
+  font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--violet)}
+.steps h3{color:var(--deep);margin-bottom:6px}
+.steps p{color:var(--muted);font-weight:500;max-width:36ch}
+.sign{display:grid;justify-items:start;gap:18px;padding-top:44px;border-top:1.5px solid var(--line-s)}
+.sign .logo-lg{width:min(72vw,300px);height:auto;display:block}
+.slogan{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,8vw,2.8rem);line-height:1;color:var(--deep)}
+.site{display:inline-flex;align-items:center;gap:12px;margin-top:6px;font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,11vw,4.4rem);line-height:1;color:var(--violet);text-decoration:none;
+  background:linear-gradient(var(--teal),var(--teal)) 0 100%/0 3px no-repeat;padding-bottom:6px;transition:background-size .8s var(--ease)}
+.site:hover{background-size:100% 3px}
+.site svg{width:.6em;height:.6em;fill:none;stroke:var(--teal);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .6s var(--ease)}
+.site:hover svg{transform:translate(4px,-4px)}
+.ftr{padding:28px var(--gutter) calc(28px + env(safe-area-inset-bottom));display:grid;gap:14px;justify-items:start;font-size:.88rem;font-weight:600;color:rgba(245,242,255,.7);--lv:var(--snow);--lt:var(--aqua)}
+.ftr svg{height:26px;width:auto}
+.ftr .in{max-width:1200px;width:100%;margin:0 auto;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));z-index:70;width:max-content;max-width:calc(100vw - 24px);display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:16px;
+  background:var(--night);color:var(--snow);font-weight:700;box-shadow:0 24px 50px -20px rgba(22,6,48,.8);opacity:0;pointer-events:none;transform:translate(-50%,16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.toast.on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.toast a{color:var(--aqua);white-space:nowrap}
+
+/* =========================================================
+   ≥ 600
+   ========================================================= */
+@media (min-width:600px){
+  :root{--gutter:32px}
+  .row2{grid-template-columns:1fr 1fr}
+  .seg.g4{grid-auto-flow:column;grid-template-columns:none}
+  .filters{grid-template-columns:1fr 1fr}
+  .kpis{grid-template-columns:repeat(4,1fr)}
+  .kpi,.kpi:nth-child(odd),.kpi:nth-child(even){padding:18px 18px 18px 0;border-right:1.5px solid var(--line)}
+  .kpi+.kpi{padding-left:18px}
+  .kpi:last-child{border-right:0}
+}
+/* =========================================================
+   ≥ 960 (desktop)
+   ========================================================= */
+@media (min-width:960px){
+  :root{--gutter:56px;--header:68px}
+  .sec{padding-top:calc(var(--header) + 72px);padding-bottom:120px}
+  .hdr nav{display:flex}
+  .cue{display:flex}
+  .prov .ph,.prov label{grid-template-columns:26px minmax(0,1fr) 78px 64px 88px;gap:8px}
+  .prov label{font-size:.95rem}
+  .hdr .brand svg{height:34px}
+  .hero-grid{grid-template-columns:1.2fr .9fr;align-items:center;gap:56px}
+  h1{font-size:clamp(5rem,8vw,8rem)}
+  .tire{width:100%;max-width:470px}
+  .two{grid-template-columns:1fr 1fr;align-items:center;gap:80px}
+  .chaos{margin-top:44px}
+  .sec-head{margin-bottom:56px}
+  .flow{grid-template-columns:repeat(6,1fr);gap:12px;padding-left:0;margin-bottom:72px}
+  .flow::before,.flow::after{left:calc(100%/12);right:calc(100%/12);top:23px;bottom:auto;width:auto;height:2px}
+  .flow::after{transform-origin:0 50%;transform:scaleX(0)}
+  .flow.in::after{transform:scaleX(1)}
+  .flow li{flex-direction:column;text-align:center;gap:14px}
+  .mods{grid-template-columns:repeat(3,1fr);border-top:0}
+  .mod{padding:4px 36px 8px;border-bottom:0;border-left:1.5px solid var(--line-s)}
+  .mod:first-child{padding-left:0;border-left:0}
+  .band-links{grid-template-columns:1fr 1fr;gap:0 48px}
+  .qz{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:72px}
+  .qout{position:sticky;top:calc(var(--header) + 24px)}
+  .qbar{display:none}
+  .filters{grid-template-columns:repeat(4,auto);justify-content:start;gap:24px}
+  .filters .f{min-width:200px}
+  .charts{grid-template-columns:1fr 1fr;gap:0 56px}
+  .steps{grid-template-columns:repeat(3,1fr);gap:40px;padding-left:0;padding-top:72px}
+  .steps::before,.steps::after{left:0;right:0;top:23px;bottom:auto;width:auto;height:2px}
+  .steps::after{transform-origin:0 50%;transform:scaleX(0)}
+  .steps.in::after{transform:scaleX(1)}
+  .steps .n{left:0;top:-72px}
+  .sign{grid-template-columns:auto 1fr;align-items:end;column-gap:64px}
+  .sign .slogan{grid-column:1}
+  .sign .site{grid-column:2;grid-row:1/3;justify-self:end}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:1ms!important;transition-delay:0ms!important}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="dbp-logo" viewBox="0 0 1182.52 434.62"><g transform="translate(-332.037 -110.026)"><path d="M525.714 437.755H508.321C491.205 437.755 477.329 423.879 477.329 406.763V140H494.722C511.838 140 525.714 153.876 525.714 170.993Z" style="fill:var(--lv,#661EDA)"/><path d="M601.393 514.674H584C566.884 514.674 553.008 500.798 553.008 483.682V216.919H570.401C587.517 216.919 601.393 230.795 601.393 247.912Z" style="fill:var(--lt,#18A7A0)"/><path d="M627.627 401.954C629.984 398.687 683.099 322.402 646.797 242.75 623.722 192.118 578.631 171.094 566.107 165.751 619.067 150.892 681.901 192.157 699.884 252.028 717.989 312.303 686.116 382.472 627.627 401.954" style="fill:var(--lt,#18A7A0)"/><path d="M452.373 252.034C450.016 255.301 396.901 331.586 433.203 411.238 456.278 461.87 501.369 482.894 513.893 488.237 460.933 503.096 398.099 461.831 380.116 401.96 362.011 341.685 393.884 271.516 452.373 252.034" style="fill:var(--lv,#661EDA)"/><path d="M688.238 461.327C688.238 477.772 674.907 491.102 658.463 491.102 642.018 491.102 628.687 477.772 628.687 461.327 628.687 444.882 642.018 431.552 658.463 431.552 674.907 431.552 688.238 444.882 688.238 461.327" style="fill:var(--lt,#18A7A0)"/><path d="M451.275 199.551C451.275 215.996 437.944 229.326 421.5 229.326 405.055 229.326 391.724 215.996 391.724 199.551 391.724 183.106 405.055 169.776 421.5 169.776 437.944 169.776 451.275 183.106 451.275 199.551" style="fill:var(--lv,#661EDA)"/></g><g transform="translate(286.998 -560.544) scale(1.03876)"><path d="M294.519 669.882C294.519 673.236 293.981 675.751 292.921 677.426 291.853 679.101 289.493 679.937 285.834 679.937H271.435V577.093H286.747C289.641 577.093 291.664 577.89 292.805 579.491 293.946 581.089 294.519 583.569 294.519 586.919ZM315.889 694.336C318.249 690.989 319.429 685.651 319.429 678.339V578.462C319.429 571.301 318.207 566.044 315.777 562.693 313.336 559.343 308.535 557.664 301.378 557.664H246.753V699.365H301.146C308.612 699.365 313.522 697.69 315.889 694.336" style="fill:var(--lv,#661EDA)"/><path d="M360.111 626C361.024 621.125 363.082 617.508 366.281 615.145 369.481 612.785 373.137 611.601 377.25 611.601 380.6 611.601 383.613 611.794 386.279 612.173 388.944 612.556 391.115 613.051 392.794 613.659L393.938 592.633C392.565 591.871 390.813 591.302 388.677 590.919 386.542 590.54 383.424 590.347 379.307 590.347 375.501 590.347 371.574 591.414 367.539 593.546 363.5 595.681 360.339 598.881 358.053 603.144L355.77 591.948H335.886V699.365H360.111Z" style="fill:var(--lv,#661EDA)"/><path d="M404.678 699.365H428.903V591.948H404.678Z" style="fill:var(--lv,#661EDA)"/><path d="M416.563 581.434C422.196 581.434 425.778 580.672 427.303 579.148 428.827 577.627 429.589 574.807 429.589 570.691 429.589 566.427 428.827 563.491 427.303 561.893 425.778 560.292 422.196 559.495 416.563 559.495 411.078 559.495 407.569 560.292 406.048 561.893 404.524 563.491 403.766 566.427 403.766 570.691 403.766 574.807 404.524 577.627 406.048 579.148 407.569 580.672 411.078 581.434 416.563 581.434" style="fill:var(--lv,#661EDA)"/><path d="M483.982 699.365L515.066 591.948H491.982L476.898 655.483 477.355 657.769 460.213 591.948H437.361L468.441 699.365Z" style="fill:var(--lv,#661EDA)"/><path d="M545.237 636.972V621.66C545.237 618.309 546.185 615.412 548.092 612.975 549.996 610.537 553.083 609.315 557.351 609.315 561.768 609.315 564.929 610.573 566.832 613.087 568.736 615.602 569.691 618.46 569.691 621.66V636.972ZM579.292 594.119C573.954 591.759 566.72 590.575 557.578 590.575 547.369 590.575 539.635 591.798 534.382 594.231 529.124 596.672 525.58 599.91 523.755 603.946 521.924 607.984 521.008 612.518 521.008 617.544V673.539C521.008 678.417 521.924 682.908 523.755 687.024 525.58 691.137 529.043 694.417 534.15 696.851 539.256 699.292 546.835 700.507 556.893 700.507 566.337 700.507 573.726 699.292 579.061 696.851 584.392 694.417 588.207 691.102 590.489 686.909 592.775 682.722 593.916 677.96 593.916 672.625V658.911L569.691 660.741V668.281C569.691 671.79 568.7 674.722 566.72 677.082 564.739 679.446 561.385 680.626 556.661 680.626 552.7 680.626 549.806 679.481 547.981 677.194 546.15 674.912 545.237 672.169 545.237 668.969V649.998H593.916V638.57 636.972 617.087C593.916 612.058 592.81 607.566 590.601 603.605 588.392 599.643 584.623 596.483 579.292 594.119" style="fill:var(--lv,#661EDA)"/><path d="M656.198 612.518C658.256 614.344 659.281 617.396 659.281 621.66V699.365H683.507V613.431C683.507 605.512 681.298 599.643 676.88 595.833 672.458 592.026 666.214 590.119 658.137 590.119 652.195 590.119 647.053 591.225 642.712 593.434 638.371 595.643 635.056 598.804 632.77 602.916L630.483 591.72H610.599V699.365H634.828V618.917C635.741 616.023 637.149 613.772 639.052 612.174 640.956 610.572 643.66 609.775 647.169 609.775 651.127 609.775 654.14 610.688 656.198 612.518" style="fill:var(--lv,#661EDA)"/><path d="M747.08 675.884C747.08 678.53 746.879 680.481 746.476 681.745 746.073 683.01 745.443 683.842 744.58 684.245 743.719 684.647 742.365 684.846 740.531 684.846H728.639V633.144H740.703C742.541 633.144 743.918 633.433 744.84 634.007 745.759 634.582 746.359 635.472 746.651 636.677 746.934 637.884 747.08 639.521 747.08 641.589ZM757.593 620.565C754.72 619.185 750.639 618.497 745.358 618.497H728.639V591.265H710.37V699.496H749.492C754.776 699.496 758.51 698.781 760.694 697.343 762.877 695.907 764.198 693.463 764.659 690.018 765.117 686.57 765.347 681.745 765.347 675.54V637.797C765.347 633.316 764.77 629.67 763.626 626.855 762.477 624.04 760.464 621.942 757.593 620.565" style="fill:var(--lv,#661EDA)"/><path d="M815.325 618.497L801.713 670.543 801.538 674.851 801.368 670.543 787.923 618.497H770.347L793.956 697.6 792.407 704.321C791.141 709.376 789.446 712.822 787.322 714.662 785.193 716.497 782.41 717.419 778.962 717.419H770.861C770.859 717.428 770.805 717.639 770.803 717.647 769.853 721.361 768.896 725.077 767.932 728.793H784.134C790.336 728.793 795.047 727.271 798.265 724.228 801.48 721.182 804.122 716.153 806.194 709.146L833.248 618.497Z" style="fill:var(--lv,#661EDA)"/><path d="M308.847 787.486C308.847 793.593 307.792 797.977 305.699 800.651 303.597 803.324 300.163 804.656 295.396 804.656H277.945V741.705H296.826C301.592 741.705 304.793 742.756 306.411 744.848 308.029 746.95 308.847 751.818 308.847 759.442ZM330.164 720.384C326.25 718.383 320.191 717.38 311.995 717.38H246.753V894.79H277.945V828.976H305.699C316.572 828.976 324.39 827.116 329.161 823.396 333.928 819.676 336.891 814.813 338.034 808.803 339.178 802.796 339.749 796.355 339.749 789.487V744.848C339.749 738.745 339.125 733.645 337.889 729.542 336.645 725.44 334.068 722.389 330.164 720.384" style="fill:var(--lt,#18A7A0)"/><path d="M385.244 816.673V797.502C385.244 793.307 386.431 789.68 388.819 786.628 391.202 783.577 395.067 782.047 400.409 782.047 405.941 782.047 409.898 783.621 412.281 786.769 414.664 789.917 415.86 793.496 415.86 797.502V816.673ZM427.881 763.021C421.198 760.066 412.141 758.584 400.695 758.584 387.913 758.584 378.231 760.114 371.653 763.162 365.071 766.218 360.634 770.272 358.348 775.324 356.057 780.38 354.909 786.057 354.909 792.349V862.454C354.909 868.562 356.057 874.186 358.348 879.339 360.634 884.488 364.97 888.595 371.363 891.642 377.756 894.698 387.245 896.219 399.838 896.219 411.661 896.219 420.913 894.698 427.592 891.642 434.266 888.595 439.041 884.444 441.899 879.194 444.762 873.953 446.191 867.99 446.191 861.311V844.141L415.86 846.432V855.872C415.86 860.265 414.62 863.936 412.141 866.891 409.661 869.85 405.461 871.328 399.547 871.328 394.588 871.328 390.964 869.894 388.678 867.032 386.387 864.174 385.244 860.74 385.244 856.734V832.981H446.191V818.674 816.673 791.777C446.191 785.481 444.806 779.857 442.04 774.897 439.274 769.937 434.556 765.98 427.881 763.021" style="fill:var(--lt,#18A7A0)"/><path d="M526.023 855.872C526.023 860.265 524.783 863.936 522.304 866.891 519.823 869.85 515.629 871.327 509.715 871.327 504.75 871.327 501.132 869.894 498.841 867.032 496.554 864.174 495.411 860.739 495.411 856.734V797.502C495.411 793.307 496.598 789.68 498.981 786.628 501.365 783.577 505.234 782.047 510.572 782.047 516.104 782.047 520.061 783.621 522.448 786.769 524.832 789.917 526.023 793.496 526.023 797.502ZM538.044 763.021C531.361 760.066 522.304 758.584 510.862 758.584 498.076 758.584 488.398 760.114 481.816 763.162 475.238 766.217 470.797 770.271 468.511 775.324 466.224 780.38 465.076 786.057 465.076 792.349V862.454C465.076 868.562 466.224 874.186 468.511 879.339 470.797 884.488 475.137 888.594 481.53 891.642 487.919 894.697 497.412 896.219 510.001 896.219 521.829 896.219 531.08 894.697 537.754 891.642 544.433 888.594 549.204 884.444 552.062 879.194 554.929 873.952 556.358 867.99 556.358 861.311V791.777C556.358 785.481 554.973 779.857 552.207 774.897 549.441 769.937 544.719 765.98 538.044 763.021" style="fill:var(--lt,#18A7A0)"/><path d="M638.19 856.448C638.19 859.693 637.953 862.362 637.478 864.459 636.998 866.561 636 868.082 634.47 869.037 632.944 869.995 630.654 870.466 627.602 870.466H607.578V784.623H627.32C630.368 784.623 632.615 784.957 634.043 785.626 635.473 786.294 636.519 787.679 637.192 789.776 637.856 791.874 638.19 795.119 638.19 799.503ZM660.799 763.737C657.172 761.447 650.968 760.303 642.2 760.303H577.243V940H607.578V894.79H635.332C644.104 894.79 650.88 893.647 655.646 891.356 660.412 889.065 663.754 885.587 665.662 880.913 667.566 876.239 668.525 870.18 668.525 862.74V800.074C668.525 789.776 668.142 781.717 667.377 775.895 666.612 770.078 664.422 766.024 660.799 763.737" style="fill:var(--lt,#18A7A0)"/><path d="M690.554 894.79H720.889V716.523H690.554Z" style="fill:var(--lt,#18A7A0)"/><path d="M772.105 816.673V797.502C772.105 793.307 773.292 789.68 775.68 786.628 778.063 783.577 781.928 782.047 787.27 782.047 792.797 782.047 796.755 783.621 799.147 786.769 801.53 789.917 802.721 793.496 802.721 797.502V816.673ZM814.738 763.021C808.059 760.066 799.001 758.584 787.556 758.584 774.774 758.584 765.096 760.114 758.51 763.162 751.932 766.218 747.495 770.272 745.204 775.324 742.918 780.38 741.774 786.057 741.774 792.349V862.454C741.774 868.562 742.918 874.186 745.204 879.339 747.495 884.488 751.835 888.595 758.228 891.642 764.613 894.698 774.11 896.219 786.694 896.219 798.522 896.219 807.773 894.698 814.453 891.642 821.131 888.595 825.897 884.444 828.76 879.194 831.623 873.953 833.056 867.99 833.056 861.311V844.141L802.721 846.432V855.872C802.721 860.265 801.477 863.936 799.001 866.891 796.517 869.85 792.322 871.328 786.413 871.328 781.449 871.328 777.83 869.894 775.535 867.032 773.248 864.174 772.105 860.74 772.105 856.734V832.981H833.056V818.674 816.673 791.777C833.056 785.481 831.667 779.857 828.905 774.897 826.135 769.937 821.413 765.98 814.738 763.021" style="fill:var(--lt,#18A7A0)"/></g></symbol><symbol id="dbp-mark" viewBox="26 26 364 383"><g transform="translate(-332.037 -110.026)"><path d="M525.714 437.755H508.321C491.205 437.755 477.329 423.879 477.329 406.763V140H494.722C511.838 140 525.714 153.876 525.714 170.993Z" style="fill:var(--lv,#661EDA)"/><path d="M601.393 514.674H584C566.884 514.674 553.008 500.798 553.008 483.682V216.919H570.401C587.517 216.919 601.393 230.795 601.393 247.912Z" style="fill:var(--lt,#18A7A0)"/><path d="M627.627 401.954C629.984 398.687 683.099 322.402 646.797 242.75 623.722 192.118 578.631 171.094 566.107 165.751 619.067 150.892 681.901 192.157 699.884 252.028 717.989 312.303 686.116 382.472 627.627 401.954" style="fill:var(--lt,#18A7A0)"/><path d="M452.373 252.034C450.016 255.301 396.901 331.586 433.203 411.238 456.278 461.87 501.369 482.894 513.893 488.237 460.933 503.096 398.099 461.831 380.116 401.96 362.011 341.685 393.884 271.516 452.373 252.034" style="fill:var(--lv,#661EDA)"/><path d="M688.238 461.327C688.238 477.772 674.907 491.102 658.463 491.102 642.018 491.102 628.687 477.772 628.687 461.327 628.687 444.882 642.018 431.552 658.463 431.552 674.907 431.552 688.238 444.882 688.238 461.327" style="fill:var(--lt,#18A7A0)"/><path d="M451.275 199.551C451.275 215.996 437.944 229.326 421.5 229.326 405.055 229.326 391.724 215.996 391.724 199.551 391.724 183.106 405.055 169.776 421.5 169.776 437.944 169.776 451.275 183.106 451.275 199.551" style="fill:var(--lv,#661EDA)"/></g></symbol></svg>
+
+<header class="hdr">
+  <a class="brand" href="#inicio" aria-label="Driven By People, inicio"><svg viewBox="0 0 1182.52 434.62" role="img" aria-label="Driven By People"><use href="#dbp-logo"/></svg></a>
+  <nav aria-label="Secciones">
+    <a href="#negocio">Negocio</a><a href="#problema">Problema</a><a href="#solucion">Solución</a><a href="#cotizador">Cotizador</a><a href="#rentabilidad">Rentabilidad</a>
+  </nav>
+  <a class="btn sm" href="#cotizador">Probar demo</a>
+  <span class="bar" id="bar"></span>
+</header>
+
+<main>
+
+<!-- ======================= 1 · HERO ======================= -->
+<section class="sec night hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker rv" style="--d:0">Propuesta · Distribución de cubiertas</div>
+      <h1 class="rv" style="--d:1">Organizador y <em>presupuestador</em></h1>
+      <p class="lead rv" style="--d:2">Cotizaciones, facturación y seguimiento de clientes en una sola herramienta.</p>
+      <div class="meta rv" style="--d:3"><span>Driven By People</span><span>Octubre 2026</span></div>
+      <div class="ctas rv" style="--d:4">
+        <a class="btn" href="#cotizador">Probar el cotizador <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn ghost" href="#negocio">Ver la propuesta</a>
+      </div>
+    </div>
+    <svg class="tire io" viewBox="-220 -220 440 440" aria-hidden="true">
+      <g class="spin">
+        <circle r="200" class="t-out draw" pathLength="1"/>
+        <circle r="184" class="t-tread"/>
+        <circle r="168" class="t-in draw" pathLength="1" style="--d:1"/>
+        <circle r="118" class="t-rim draw" pathLength="1" style="--d:2"/>
+        <circle r="104" class="t-rim2"/>
+        <g id="spokes"></g>
+      </g>
+      <circle r="54" class="t-hub draw" pathLength="1" style="--d:3"/>
+      <use href="#dbp-mark" class="t-mark" x="-27" y="-29" width="54" height="57"/>
+      <g class="orbit">
+        <path class="t-arc" d="M0 -212 A212 212 0 0 1 149.9 -149.9"/>
+        <circle class="t-dot" cx="149.9" cy="-149.9" r="5"/>
+      </g>
+    </svg>
+  </div>
+  <a class="cue" href="#negocio"><span>Deslizá</span><i></i></a>
+</section>
+
+<!-- ======================= 2 · NEGOCIO ======================= -->
+<section class="sec snow" id="negocio">
+  <div class="wrap two">
+    <div>
+      <div class="kicker rv">El negocio</div>
+      <h2 class="rv" style="--d:1">Comprás a varios. <em>Vendés a muchos.</em></h2>
+      <p class="lead rv" style="--d:2">Conseguís cubiertas con distintos proveedores y las distribuís a gomerías. Cada precio, pedido y cobro pasa por vos.</p>
+      <ul class="facts rv" style="--d:3">
+        <li><span class="fl">Compra</span><p>Precios de proveedores que cambian seguido.</p></li>
+        <li><span class="fl">Venta</span><p>Clientes que esperan respuesta en el momento.</p></li>
+        <li><span class="fl">Margen</span><p>Una ganancia que se define en cada operación.</p></li>
+      </ul>
+    </div>
+    <svg class="net io" id="net" viewBox="0 0 360 470" role="img" aria-label="Diagrama: tres proveedores, el distribuidor en el centro y cinco gomerías"></svg>
+  </div>
+</section>
+
+<!-- ======================= 3 · PROBLEMA ======================= -->
+<section class="sec deep" id="problema">
+  <div class="wrap two">
+    <div>
+      <div class="kicker rv">El problema</div>
+      <h2 class="rv" style="--d:1">La gestión se come <em>el tiempo de venta.</em></h2>
+      <p class="lead rv" style="--d:2">Hoy la operación vive repartida entre WhatsApp, planillas y memoria. Funciona, pero cuesta horas.</p>
+      <svg class="chaos io" viewBox="0 0 640 250" role="img" aria-label="Un mismo pedido recorre WhatsApp, planillas y memoria antes de llegar a la factura">
+        <path class="ghost" d="M24 196 C33.3 183.3 59.0 124.3 80 120 C101.0 115.7 127.7 168.7 150 170 C172.3 171.3 195.3 146.0 214 128 C232.7 110.0 243.3 73.7 262 62 C280.7 50.3 316.7 45.0 326 58 C335.3 71.0 330.7 124.7 318 140 C305.3 155.3 259.3 139.0 250 150 C240.7 161.0 248.0 197.7 262 206 C276.0 214.3 309.3 203.7 334 200 C358.7 196.3 390.3 201.3 410 184 C429.7 166.7 453.7 118.0 452 96 C450.3 74.0 413.3 49.3 400 52 C386.7 54.7 367.0 100.0 372 112 C377.0 124.0 408.7 117.7 430 124 C451.3 130.3 480.3 136.3 500 150 C519.7 163.7 533.0 207.7 548 206 C563.0 204.3 578.7 161.0 590 140 C601.3 119.0 611.7 90.0 616 80"/>
+        <path class="path draw" pathLength="1" d="M24 196 C33.3 183.3 59.0 124.3 80 120 C101.0 115.7 127.7 168.7 150 170 C172.3 171.3 195.3 146.0 214 128 C232.7 110.0 243.3 73.7 262 62 C280.7 50.3 316.7 45.0 326 58 C335.3 71.0 330.7 124.7 318 140 C305.3 155.3 259.3 139.0 250 150 C240.7 161.0 248.0 197.7 262 206 C276.0 214.3 309.3 203.7 334 200 C358.7 196.3 390.3 201.3 410 184 C429.7 166.7 453.7 118.0 452 96 C450.3 74.0 413.3 49.3 400 52 C386.7 54.7 367.0 100.0 372 112 C377.0 124.0 408.7 117.7 430 124 C451.3 130.3 480.3 136.3 500 150 C519.7 163.7 533.0 207.7 548 206 C563.0 204.3 578.7 161.0 590 140 C601.3 119.0 611.7 90.0 616 80"/>
+        <circle class="nd" cx="24" cy="196" r="7" style="--d:0"/><text class="lb sm" x="8" y="232" style="--d:0">PEDIDO</text>
+        <circle class="nd" cx="214" cy="128" r="7" style="--d:1"/><text class="lb" x="200" y="106" text-anchor="end" style="--d:1">WhatsApp</text>
+        <circle class="nd" cx="334" cy="200" r="7" style="--d:2"/><text class="lb" x="334" y="236" text-anchor="middle" style="--d:2">Planillas</text>
+        <circle class="nd" cx="430" cy="124" r="7" style="--d:3"/><text class="lb" x="468" y="116" style="--d:3">Memoria</text>
+        <circle class="nd" cx="616" cy="80" r="7" style="--d:4"/><text class="lb sm" x="632" y="52" text-anchor="end" style="--d:4">FACTURA</text>
+      </svg>
+    </div>
+    <ol class="pains">
+      <li class="rv" style="--d:1"><i>01</i><div><b>Cada cotización arranca de cero.</b><p>Buscar el precio, sumar el flete y calcular el margen. A mano, cada vez.</p></div></li>
+      <li class="rv" style="--d:2"><i>02</i><div><b>Los pedidos se pierden entre chats.</b><p>Lo que se acordó por WhatsApp no queda registrado en un lugar común.</p></div></li>
+      <li class="rv" style="--d:3"><i>03</i><div><b>El margen real no se ve.</b><p>No hay una foto clara de qué producto o cliente deja más ganancia.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======================= 4 · SOLUCIÓN ======================= -->
+<section class="sec mist" id="solucion">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker rv">La solución</div>
+      <h2 class="rv" style="--d:1">Un solo sistema, <em>de la lista de precios a la factura.</em></h2>
+      <p class="lead rv" style="--d:2">Cada paso alimenta al siguiente. Nada se carga dos veces.</p>
+    </div>
+    <ol class="flow io" aria-label="Flujo de trabajo">
+      <li style="--i:0"><span class="node"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg></span><div><b>Precios</b><span>Listas de proveedores</span></div></li>
+      <li style="--i:1"><span class="node"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15.5h.01M12 15.5h.01M15.5 15.5h.01"/></svg></span><div><b>Cotización</b><span>Costo, flete y margen</span></div></li>
+      <li style="--i:2"><span class="node"><svg viewBox="0 0 24 24"><path d="M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.3-4.4A8 8 0 1 1 20.5 11.5z"/><path d="M9 11.5l2.2 2.2L15.5 9.5"/></svg></span><div><b>Aceptación</b><span>Por WhatsApp</span></div></li>
+      <li style="--i:3"><span class="node"><svg viewBox="0 0 24 24"><path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14 3v5h5M9 12.5h7M9 16.5h7"/></svg></span><div><b>Factura</b><span>Electrónica (ARCA)</span></div></li>
+      <li style="--i:4"><span class="node"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5h.01M17.5 14.5h.01"/></svg></span><div><b>Cobro</b><span>Cuenta corriente</span></div></li>
+      <li style="--i:5"><span class="node"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4.5v5h-5"/></svg></span><div><b>Seguimiento</b><span>Aviso de recompra</span></div></li>
+    </ol>
+    <div class="mods">
+      <article class="mod rv" style="--d:0"><span class="num">01</span><h3>Cotizador</h3><p>Costo de proveedor, flete, logística, gastos, markup, descuento y financiación en un solo cálculo.</p>
+        <ul><li>Compara proveedores por costo puesto</li><li>Alerta cuando el margen es bajo</li><li>Mensaje listo para WhatsApp</li></ul></article>
+      <article class="mod rv" style="--d:1"><span class="num">02</span><h3>Facturación</h3><p>Del presupuesto aceptado a la factura electrónica, sin volver a cargar datos.</p>
+        <ul><li>Factura desde la cotización</li><li>Cuenta corriente por cliente</li><li>Aviso de cobros vencidos</li></ul></article>
+      <article class="mod rv" style="--d:2"><span class="num">03</span><h3>Clientes y rentabilidad</h3><p>Historial, seguimientos y un tablero de margen por producto, cliente y período.</p>
+        <ul><li>Recordatorio de recompra</li><li>Ranking de productos por margen</li><li>Filtros por período y categoría</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DEMO BAND ======================= -->
+<section class="sec night band" id="demo">
+  <div class="wrap">
+    <div class="kicker rv">Demo interactiva</div>
+    <h2 class="rv" style="--d:1">Probalo con <em>datos de ejemplo.</em></h2>
+    <nav class="band-links rv" style="--d:2" aria-label="Demos">
+      <a href="#cotizador"><span><b>01 · Cotizador</b><small>Armá una cotización con todos sus costos.</small></span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#rentabilidad"><span><b>02 · Rentabilidad</b><small>Filtrá y encontrá qué producto deja más margen.</small></span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+    <p class="note rv" style="--d:3">Precios, proveedores y clientes son ilustrativos. En el prototipo se usan tus listas reales.</p>
+  </div>
+</section>
+
+<!-- ======================= 5 · COTIZADOR ======================= -->
+<section class="sec snow" id="cotizador">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker rv">Demo 01 · Cotizador</div>
+      <h2 class="rv" style="--d:1">Cada costo, <em>en un solo cálculo.</em></h2>
+      <p class="lead rv" style="--d:2">Mové cualquier valor y el precio se recalcula al instante.</p>
+    </div>
+    <div class="qz">
+      <form class="qin" id="qform" onsubmit="return false">
+        <div class="grp rv" role="group" aria-labelledby="g1"><div class="grp-h"><i>01</i><h3 id="g1">Operación</h3></div>
+          <div class="row2">
+            <label class="fld"><span class="fl">Cliente</span><select id="q-cli"></select></label>
+            <label class="fld"><span class="fl">Producto</span><select id="q-prod"></select></label>
+          </div>
+          <div class="fld"><span class="fl">Cantidad</span>
+            <div class="stepper"><button type="button" data-step="-1" aria-label="Restar una">−</button><output id="q-qty-o">12</output><button type="button" data-step="1" aria-label="Sumar una">+</button><input type="range" id="q-qty" min="1" max="80" value="12" aria-label="Cantidad"></div>
+          </div>
+        </div>
+        <div class="grp rv" role="group" aria-labelledby="g2"><div class="grp-h"><i>02</i><h3 id="g2">Costo de compra</h3></div>
+          <p class="hint">Se compara por <b>costo puesto</b>: precio del proveedor más el flete hasta tu depósito.</p>
+          <div class="prov" id="q-prov" role="radiogroup" aria-label="Proveedor"></div>
+          <p class="prov-tip" id="q-tip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5h.01"/></svg><span></span></p>
+        </div>
+        <div class="grp rv" role="group" aria-labelledby="g3"><div class="grp-h"><i>03</i><h3 id="g3">Logística y gastos</h3></div>
+          <div class="fld"><span class="fl">Entrega al cliente</span><div class="seg g4" id="q-log"></div></div>
+          <label class="fld"><span class="fl">Gastos operativos <output id="q-gop-o"></output></span><input type="range" id="q-gop" min="0" max="8" step="0.5" value="2"></label>
+          <label class="fld"><span class="fl">Impuestos sobre ventas (IIBB) <output id="q-iibb-o"></output></span><input type="range" id="q-iibb" min="0" max="6" step="0.25" value="3.5"></label>
+        </div>
+        <div class="grp rv" role="group" aria-labelledby="g4"><div class="grp-h"><i>04</i><h3 id="g4">Precio de venta</h3></div>
+          <label class="fld"><span class="fl">Markup sobre costo <output id="q-mk-o"></output></span><input type="range" id="q-mk" min="5" max="50" value="25"></label>
+          <label class="fld"><span class="fl">Descuento comercial <output id="q-dsc-o"></output></span><input type="range" id="q-dsc" min="0" max="15" value="0"></label>
+        </div>
+        <div class="grp rv" role="group" aria-labelledby="g5"><div class="grp-h"><i>05</i><h3 id="g5">Condiciones</h3></div>
+          <div class="fld"><span class="fl">Condición de pago</span><div class="seg" id="q-pay"></div></div>
+          <label class="switch"><input type="checkbox" id="q-iva" checked><span class="sw"></span>Sumar IVA 21%</label>
+        </div>
+      </form>
+
+      <aside class="qout rv" id="qout" aria-live="polite">
+        <span class="fl">Total al cliente</span>
+        <div class="big" id="o-total">—</div>
+        <p class="sub" id="o-sub"></p>
+        <div class="mid">
+          <svg class="gauge" viewBox="0 0 220 132" role="img" aria-label="Margen sobre venta">
+            <path class="g-track" d="M20 116 A90 90 0 0 1 200 116" pathLength="100"/>
+            <path class="g-fill" id="g-fill" d="M20 116 A90 90 0 0 1 200 116" pathLength="100"/>
+            <g id="g-ticks"></g>
+            <text class="g-val" id="g-val" x="110" y="100">0%</text>
+            <text class="g-lbl" x="110" y="128">Margen s/ venta</text>
+            <text class="g-end" x="20" y="132">0</text><text class="g-end" x="200" y="132">40%</text>
+          </svg>
+          <dl class="mets">
+            <div><dt>Ganancia</dt><dd id="o-gan">—</dd></div>
+            <div><dt>Costo puesto x u.</dt><dd id="o-land">—</dd></div>
+            <div><dt>Precio neto x u.</dt><dd id="o-unet">—</dd></div>
+          </dl>
+        </div>
+        <div class="wf"><h4>Cómo se forma el precio</h4><div id="o-wf"></div><p class="info" id="o-info"></p></div>
+        <p class="alert" id="o-alert" role="status"></p>
+        <div class="acts"><button class="btn" type="button" id="o-save">Guardar cotización</button><button class="btn ghost" type="button" id="o-copy">Copiar mensaje</button></div>
+        <details class="msg"><summary>Ver mensaje para WhatsApp</summary><pre id="o-msg"></pre></details>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 6 · RENTABILIDAD ======================= -->
+<section class="sec night" id="rentabilidad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker rv">Demo 02 · Rentabilidad</div>
+      <h2 class="rv" style="--d:1">Qué productos <em>dejan más margen.</em></h2>
+      <p class="lead rv" style="--d:2">Filtrá por período, categoría o cliente. Tocá un producto para ver solo sus números.</p>
+    </div>
+    <div class="filters rv">
+      <div class="f"><span class="fl" style="margin-bottom:8px">Período</span><div class="seg" id="d-per"></div></div>
+      <div class="f"><span class="fl" style="margin-bottom:8px">Categoría</span><div class="seg" id="d-cat"></div></div>
+      <label class="f"><span class="fl">Cliente</span><select id="d-cli"></select></label>
+      <div class="f"><span class="fl" style="margin-bottom:8px">Ver por</span><div class="seg" id="d-met"></div></div>
+    </div>
+    <div class="chips" id="d-chips" aria-live="polite"></div>
+    <div class="kpis rv" id="d-kpis">
+      <div class="kpi"><span class="fl">Ventas netas</span><b data-k="neto">—</b></div>
+      <div class="kpi acc"><span class="fl">Ganancia</span><b data-k="gan">—</b></div>
+      <div class="kpi"><span class="fl">Margen s/ venta</span><b data-k="mg">—</b></div>
+      <div class="kpi"><span class="fl">Operaciones</span><b data-k="ops">—</b></div>
+    </div>
+    <div class="charts">
+      <div class="ch rv"><div class="ch-h"><h4 id="t-prod">Ganancia por producto</h4><span class="ch-n">Tocá para filtrar</span></div><div class="hb" id="c-prod"></div></div>
+      <div class="ch rv" style="--d:1"><div class="ch-h"><h4>Volumen vs. margen</h4><span class="ch-n">Tamaño del punto = ganancia</span></div><svg class="svgc" id="c-sc" viewBox="0 0 520 340" role="img" aria-label="Productos según unidades vendidas y margen"></svg></div>
+      <div class="ch rv"><div class="ch-h"><h4 id="t-time">Ganancia por mes</h4><span class="ch-n" id="n-time"></span></div><svg class="svgc" id="c-time" viewBox="0 0 520 250" role="img" aria-label="Evolución en el tiempo"></svg></div>
+      <div class="ch rv" style="--d:1"><div class="ch-h"><h4 id="t-cli">Ganancia por cliente</h4></div><div class="hb" id="c-cli"></div></div>
+    </div>
+    <p class="foot-note">Incluye las cotizaciones que guardes en la demo 01. Datos de ejemplo.</p>
+  </div>
+</section>
+
+<!-- ======================= 7 · CIERRE ======================= -->
+<section class="sec snow" id="contacto">
+  <div class="wrap">
+    <div class="kicker rv">Próximos pasos</div>
+    <h2 class="rv" style="--d:1">Vos vendés. <em>El sistema ordena.</em></h2>
+    <ol class="steps io">
+      <li class="rv" style="--d:1"><span class="n">1</span><h3>Relevamiento</h3><p>Vemos cómo cotizás hoy, con qué proveedores y qué datos usás.</p></li>
+      <li class="rv" style="--d:2"><span class="n">2</span><h3>Prototipo</h3><p>Armamos el sistema con tus listas de precios y clientes reales.</p></li>
+      <li class="rv" style="--d:3"><span class="n">3</span><h3>Uso y ajuste</h3><p>Lo usás dos semanas en tu operación diaria y ajustamos lo que haga falta.</p></li>
+    </ol>
+    <div class="sign rv">
+      <svg class="logo-lg" viewBox="0 0 1182.52 434.62" role="img" aria-label="Driven By People"><use href="#dbp-logo"/></svg>
+      <p class="slogan">Agilizando tu tiempo importante.</p>
+      <a class="site" href="https://www.drivenbypeople.io" target="_blank" rel="noopener">drivenbypeople.io<svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr night">
+  <div class="in">
+    <svg viewBox="0 0 1182.52 434.62" role="img" aria-label="Driven By People"><use href="#dbp-logo"/></svg>
+    <span>© 2026 Driven By People · Córdoba, Argentina · <a href="https://www.drivenbypeople.io" target="_blank" rel="noopener">drivenbypeople.io</a></span>
+  </div>
+</footer>
+
+<div class="qbar" id="qbar" aria-hidden="true">
+  <div><span class="fl">Total</span><b class="acc" id="qb-total">—</b></div>
+  <div><span class="fl">Margen</span><b id="qb-mg">—</b></div>
+  <a class="btn sm" href="#qout">Ver detalle</a>
+</div>
+<div class="toast" id="toast" role="status"><span id="toast-t"></span><a href="#rentabilidad" id="toast-a">Ver en rentabilidad</a></div>
+
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var SVGNS='http://www.w3.org/2000/svg';
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- format ---------------- */
+var fmt=new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0});
+function money(v){return fmt.format(Math.round(v))}
+function compact(v){
+  var a=Math.abs(v), s=v<0?'−':'';
+  if(a>=1e6) return s+'$ '+(a/1e6).toFixed(a>=1e7?1:2).replace('.',',')+' M';
+  if(a>=1e3) return s+'$ '+Math.round(a/1e3)+' mil';
+  return s+'$ '+Math.round(a);
+}
+function pct(v,d){return (v).toFixed(d==null?1:d).replace('.',',')+'%'}
+
+/* ---------------- data (ejemplo) ---------------- */
+var PROV={A:{n:'Proveedor A',f:3500},B:{n:'Proveedor B',f:7500},C:{n:'Proveedor C',f:0}};
+var PRODUCTS=[
+  {id:0,n:'Pirelli Cinturato P1',sh:'Cinturato P1',s:'175/65 R14',cat:'Auto',p:{A:128000,B:121000,C:131000},mk:.24},
+  {id:1,n:'Fate Sentiva',sh:'Sentiva',s:'185/60 R15',cat:'Auto',p:{A:112000,B:108500,C:114800},mk:.30},
+  {id:2,n:'Firestone F-600',sh:'F-600',s:'175/70 R13',cat:'Auto',p:{A:96000,B:94000,C:101000},mk:.34},
+  {id:3,n:'Bridgestone Dueler H/T',sh:'Dueler H/T',s:'265/65 R17',cat:'Camioneta',p:{A:265000,B:256000,C:262000},mk:.25},
+  {id:4,n:'Michelin Primacy 4',sh:'Primacy 4',s:'205/55 R16',cat:'Auto',p:{A:184000,B:186500,C:192000},mk:.19},
+  {id:5,n:'Goodyear Wrangler',sh:'Wrangler',s:'235/75 R15',cat:'Camioneta',p:{A:205000,B:197000,C:206500},mk:.27},
+  {id:6,n:'Fate Camión',sh:'Fate Camión',s:'295/80 R22.5',cat:'Camión',p:{A:610000,B:598000,C:618000},mk:.15}
+];
+var CLIENTS=['Gomería El Rulo','Neumáticos Sur','Taller Don Pedro','Transportes Del Centro','Rodados Norte','Gomería La Rueda'];
+var LOG=[{n:'Retiro',c:0},{n:'Capital',c:18000},{n:'Interior',c:45000},{n:'Otra prov.',c:95000}];
+var PAY=[{n:'Contado',f:0},{n:'30 días',f:.03,s:'+3%'},{n:'60 días',f:.06,s:'+6%'}];
+var CATS=['Todas','Auto','Camioneta','Camión'];
+var MONTHS=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+
+function fleteU(p,k){return PROV[k].f*(p.cat==='Camión'?3:1)}
+function landed(p,k){return p.p[k]+fleteU(p,k)}
+function bestLanded(p){var b='A';['B','C'].forEach(function(k){if(landed(p,k)<landed(p,b)) b=k});return b}
+function cheapest(p){var b='A';['B','C'].forEach(function(k){if(p.p[k]<p.p[b]) b=k});return b}
+
+function calc(o){
+  var merc=o.price*o.q, fl=o.flete*o.q, directo=merc+fl+o.entrega;
+  var lista=directo*(1+o.mk), dsc=lista*o.dsc, fin=(lista-dsc)*o.fin, neto=lista-dsc+fin;
+  var imp=neto*o.iibb, gop=neto*o.gop, gan=neto-directo-imp-gop, iva=o.iva?neto*.21:0;
+  return {merc:merc,fl:fl,entrega:o.entrega,directo:directo,dsc:dsc,fin:fin,neto:neto,imp:imp,gop:gop,gan:gan,iva:iva,total:neto+iva,mg:neto?gan/neto:0};
+}
+
+/* operaciones históricas de ejemplo (semilla fija) */
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+var R=rng(2026), OPS=[], W=[3,4,5,2,2,3,1.4], WS=W.reduce(function(a,b){return a+b},0);
+function pickProduct(){var x=R()*WS;for(var i=0;i<W.length;i++){x-=W[i];if(x<=0) return PRODUCTS[i]}return PRODUCTS[0]}
+for(var i=0;i<130;i++){
+  var p=pickProduct(), q=p.cat==='Camión'?2+Math.floor(R()*6):4+Math.floor(R()*20);
+  var cl=CLIENTS[Math.floor(R()*CLIENTS.length)];
+  if(p.cat==='Camión'&&R()<.7) cl='Transportes Del Centro';
+  var k=bestLanded(p), r=calc({price:p.p[k],flete:fleteU(p,k),q:q,entrega:LOG[Math.floor(R()*3)].c,mk:Math.max(.08,p.mk+(R()-.5)*.08),dsc:R()<.25?.03:0,fin:R()<.3?.03:0,iibb:.035,gop:.02,iva:false});
+  OPS.push({days:Math.floor(R()*180),prod:p.id,cli:cl,qty:q,neto:r.neto,gan:r.gan});
+}
+var saved=0;
+
+/* ---------------- reveal + io ---------------- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18,rootMargin:'0px 0px -6% 0px'});
+[].forEach.call(document.querySelectorAll('.rv,.io'),function(el){io.observe(el)});
+
+/* ---------------- header progress ---------------- */
+var bar=$('bar'), ticking=false;
+function onScroll(){if(ticking) return;ticking=true;requestAnimationFrame(function(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')';ticking=false})}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ---------------- hero spokes ---------------- */
+(function(){var g=$('spokes'),s='';for(var i=0;i<5;i++){s+='<path class="t-spk" transform="rotate('+(i*72)+')" d="M-7 -56 L-16 -104 M7 -56 L16 -104"/>'}g.innerHTML=s})();
+
+/* ---------------- network diagram ---------------- */
+(function(){
+  var svg=$('net'), s='';
+  var top=[60,180,300], bot=[36,108,180,252,324], cx=180, cy=236;
+  s+='<text class="t-cap" x="0" y="16">PROVEEDORES</text>';
+  s+='<text class="t-cap" x="0" y="466">GOMERÍAS</text>';
+  top.forEach(function(x,i){s+='<path id="np'+i+'" class="ln draw" pathLength="1" style="--d:'+i+'" d="M'+x+' 86 C'+x+' 150 '+cx+' 140 '+cx+' 186"/>'});
+  bot.forEach(function(x,i){s+='<path id="nc'+i+'" class="ln draw" pathLength="1" style="--d:'+(i+3)+'" d="M'+cx+' 286 C'+cx+' 330 '+x+' 330 '+x+' 386"/>'});
+  top.forEach(function(x,i){s+='<circle class="nd" cx="'+x+'" cy="62" r="24"/><text class="t-n" x="'+x+'" y="62">'+'ABC'[i]+'</text>'});
+  s+='<circle class="ring" cx="'+cx+'" cy="'+cy+'" r="62"/>';
+  s+='<circle class="nd nd-c" cx="'+cx+'" cy="'+cy+'" r="50" stroke="none"/><text class="t-c" x="'+cx+'" y="'+cy+'">Vos</text>';
+  bot.forEach(function(x,i){s+='<circle class="nd" cx="'+x+'" cy="404" r="17"/><text class="t-n" x="'+x+'" y="404" style="font-size:15px">G'+(i+1)+'</text>'});
+  if(!reduce){
+    top.forEach(function(x,i){s+='<circle class="pulse" r="4"><animateMotion dur="2.6s" begin="'+(i*.9)+'s" repeatCount="indefinite"><mpath href="#np'+i+'"/></animateMotion></circle>'});
+    bot.forEach(function(x,i){s+='<circle class="pulse" r="4"><animateMotion dur="2.6s" begin="'+(1.3+i*.55)+'s" repeatCount="indefinite"><mpath href="#nc'+i+'"/></animateMotion></circle>'});
+  }
+  svg.innerHTML=s;
+})();
+
+/* ---------------- helpers ---------------- */
+function segment(el,items,on,cb,labelFn){
+  el.innerHTML=items.map(function(x,i){return '<button type="button" data-i="'+i+'" aria-pressed="'+(i===on)+'"'+(i===on?' class="on"':'')+'>'+labelFn(x,i)+'</button>'}).join('');
+  [].forEach.call(el.children,function(b){b.onclick=function(){[].forEach.call(el.children,function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});cb(+b.dataset.i)}});
+}
+function fill(sel,items,fn){sel.innerHTML=items.map(function(x,i){return '<option value="'+i+'">'+fn(x,i)+'</option>'}).join('')}
+function rangeFill(r){var p=(r.value-r.min)/(r.max-r.min)*100;r.style.setProperty('--p',p+'%')}
+function tween(el,to,f){
+  var from=el._v==null?0:el._v; el._v=to;
+  if(reduce){el.textContent=f(to);return}
+  var t0=performance.now(), d=700;
+  cancelAnimationFrame(el._raf);
+  (function step(t){var k=Math.min(1,(t-t0)/d);k=1-Math.pow(1-k,3);el.textContent=f(from+(to-from)*k);if(k<1) el._raf=requestAnimationFrame(step)})(t0);
+}
+function later(fn){requestAnimationFrame(function(){requestAnimationFrame(fn)})}
+
+/* =========================================================
+   Cotizador
+   ========================================================= */
+var Q={prov:null,log:1,pay:0,last:null};
+fill($('q-cli'),CLIENTS,function(x){return x});
+fill($('q-prod'),PRODUCTS,function(x){return x.n+' · '+x.s});
+segment($('q-log'),LOG,1,function(i){Q.log=i;quote()},function(x){return x.n+'<small>'+(x.c?compact(x.c):'$ 0')+'</small>'});
+segment($('q-pay'),PAY,0,function(i){Q.pay=i;quote()},function(x){return x.n+(x.s?'<small>'+x.s+'</small>':'<small>sin recargo</small>')});
+
+(function(){var g=$('g-ticks'),s='';[10,20,30].forEach(function(v){var a=Math.PI*(1-v/40);var x1=110+82*Math.cos(a),y1=116-82*Math.sin(a),x2=110+98*Math.cos(a),y2=116-98*Math.sin(a);s+='<line class="g-tick" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'"/>'});g.innerHTML=s})();
+
+function renderProv(){
+  var p=PRODUCTS[+$('q-prod').value], best=bestLanded(p), ch=cheapest(p);
+  var h='<div class="ph"><span></span><span>Proveedor</span><span>Precio</span><span>Flete</span><span>Puesto</span></div>';
+  ['A','B','C'].forEach(function(k){
+    h+='<label><input type="radio" name="prov" value="'+k+'"'+(k===Q.prov?' checked':'')+'><span class="rd"></span><span class="pn">'+PROV[k].n+(k===best?'<small>Mejor costo</small>':'')+'</span><span>'+compact(p.p[k])+'</span><span>'+(fleteU(p,k)?compact(fleteU(p,k)):'—')+'</span><span class="pl">'+money(landed(p,k))+'</span></label>';
+  });
+  $('q-prov').innerHTML=h;
+  [].forEach.call($('q-prov').querySelectorAll('input'),function(r){r.onchange=function(){Q.prov=r.value;quote()}});
+  var tip=$('q-tip');
+  if(ch!==best){tip.querySelector('span').textContent=PROV[ch].n+' tiene el precio más bajo, pero con flete conviene '+PROV[best].n+'.';tip.classList.add('on')}
+  else tip.classList.remove('on');
+}
+
+function quote(){
+  var p=PRODUCTS[+$('q-prod').value], k=Q.prov, q=+$('q-qty').value;
+  var o={price:p.p[k],flete:fleteU(p,k),q:q,entrega:LOG[Q.log].c,mk:+$('q-mk').value/100,dsc:+$('q-dsc').value/100,fin:PAY[Q.pay].f,iibb:+$('q-iibb').value/100,gop:+$('q-gop').value/100,iva:$('q-iva').checked};
+  var r=calc(o);
+  $('q-qty-o').textContent=q;
+  $('q-mk-o').textContent=$('q-mk').value+'%';
+  $('q-dsc-o').textContent=$('q-dsc').value+'%';
+  $('q-gop-o').textContent=pct(+$('q-gop').value,1);
+  $('q-iibb-o').textContent=pct(+$('q-iibb').value,2);
+  [].forEach.call(document.querySelectorAll('#qform input[type=range]'),rangeFill);
+  renderProv();
+
+  tween($('o-total'),r.total,money);
+  $('o-sub').innerHTML='Por cubierta <b>'+money(r.total/q)+'</b> · Neto sin IVA <b>'+money(r.neto)+'</b>';
+  tween($('o-gan'),r.gan,compact);
+  $('o-land').textContent=money(landed(p,k));
+  $('o-unet').textContent=money(r.neto/q);
+  var m=r.mg*100;
+  $('g-fill').style.strokeDasharray=Math.max(0,Math.min(100,m/40*100))+' 100';
+  $('g-fill').classList.toggle('low',m<8);
+  tween($('g-val'),m,function(v){return pct(v,1)});
+
+  /* waterfall */
+  var tot=r.total||1, rows=[], acc=0;
+  function add(l,v,c){var st=v>=0?acc:acc+v;rows.push({l:l,v:v,c:c,left:st/tot*100,w:Math.abs(v)/tot*100});acc+=v}
+  add('Mercadería',r.merc,'c1');
+  add('Flete de compra',r.fl,'c2');
+  add('Entrega al cliente',r.entrega,'c3');
+  add('Gastos operativos',r.gop,'c3');
+  add('Impuestos sobre ventas',r.imp,'c3');
+  add('Ganancia',r.gan,'cg');
+  rows.push({l:'Precio neto',v:r.neto,c:'sum',left:0,w:r.neto/tot*100});
+  if(o.iva){add('IVA 21%',r.iva,'cn');rows.push({l:'Total al cliente',v:r.total,c:'sum tot',left:0,w:100})}
+  var wf=$('o-wf');
+  if(wf.children.length!==rows.length){
+    wf.innerHTML=rows.map(function(x){return '<div class="wf-row '+x.c+'"><span class="l"></span><span class="v"></span><span class="t"><i style="left:0;width:0"></i></span></div>'}).join('');
+  }
+  later(function(){
+    rows.forEach(function(x,i){var el=wf.children[i];el.className='wf-row '+x.c;el.querySelector('.l').textContent=x.l;el.querySelector('.v').textContent=(x.v<0?'− ':'')+money(Math.abs(x.v));var b=el.querySelector('i');b.style.left=x.left+'%';b.style.width=Math.max(.6,x.w)+'%'});
+  });
+  var info=[];
+  if(r.dsc) info.push('descuento − '+money(r.dsc));
+  if(r.fin) info.push('recargo por financiación + '+money(r.fin));
+  $('o-info').textContent=info.length?'El precio neto ya incluye '+info.join(' y ')+'.':'';
+
+  var al=$('o-alert');
+  if(r.gan<0){al.textContent='Esta operación da pérdida. Subí el markup o revisá descuento y logística.';al.classList.add('on')}
+  else if(m<8){al.textContent='Margen bajo: con estos costos la operación deja menos del 8%.';al.classList.add('on')}
+  else al.classList.remove('on');
+
+  $('qb-total').textContent=money(r.total);
+  $('qb-mg').textContent=pct(m,1);
+
+  var cli=CLIENTS[+$('q-cli').value];
+  $('o-msg').textContent='Hola, '+cli+'! Te paso la cotización:\n\n• '+q+' × '+p.n+' '+p.s+'\n• Precio por unidad: '+money(r.total/q)+(o.iva?' (IVA incluido)':' + IVA')+'\n• Total: '+money(r.total)+'\n• Entrega: '+(LOG[Q.log].c?LOG[Q.log].n:'retiro en depósito')+'\n• Pago: '+PAY[Q.pay].n+'\n\nValidez: 48 h. ¿Te las reservo?';
+  Q.last={prod:p.id,cli:cli,qty:q,neto:r.neto,gan:r.gan,total:r.total};
+}
+
+$('q-prod').addEventListener('input',function(){Q.prov=bestLanded(PRODUCTS[+this.value]);quote()});
+['q-cli','q-qty','q-mk','q-dsc','q-gop','q-iibb','q-iva'].forEach(function(id){$(id).addEventListener('input',quote)});
+[].forEach.call(document.querySelectorAll('[data-step]'),function(b){b.onclick=function(){var r=$('q-qty');r.value=Math.max(+r.min,Math.min(+r.max,+r.value+(+b.dataset.step)));quote()}});
+Q.prov=bestLanded(PRODUCTS[0]);
+quote();
+
+var toastT;
+function toast(t,link){$('toast-t').textContent=t;$('toast-a').style.display=link?'':'none';$('toast').classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){$('toast').classList.remove('on')},4200)}
+$('toast-a').onclick=function(){$('toast').classList.remove('on')};
+$('o-save').onclick=function(){
+  var x=Q.last;OPS.push({days:0,prod:x.prod,cli:x.cli,qty:x.qty,neto:x.neto,gan:x.gan});saved++;
+  if(dashReady) renderDash();
+  toast('Cotización guardada · '+money(x.total),true);
+};
+$('o-copy').onclick=function(){
+  var t=$('o-msg').textContent;
+  function ok(){toast('Mensaje copiado. Listo para pegar en WhatsApp.',false)}
+  function fb(){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();ok()}
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok,fb); else fb();
+};
+
+/* mobile summary bar */
+(function(){
+  var inSec=false, outVis=false, qb=$('qbar');
+  function upd(){qb.classList.toggle('on',inSec&&!outVis)}
+  new IntersectionObserver(function(e){inSec=e[e.length-1].isIntersecting;upd()},{rootMargin:'-30% 0px -30% 0px'}).observe($('qform'));
+  new IntersectionObserver(function(e){outVis=e[e.length-1].isIntersecting;upd()},{threshold:.05}).observe($('qout'));
+})();
+
+/* =========================================================
+   Rentabilidad
+   ========================================================= */
+var D={per:90,cat:0,cli:'',met:'gan',sel:null}, dashReady=false;
+segment($('d-per'),[30,90,180],1,function(i){D.per=[30,90,180][i];renderDash()},function(x){return x===180?'6 meses':x+' días'});
+segment($('d-cat'),CATS,0,function(i){D.cat=i;renderDash()},function(x){return x});
+segment($('d-met'),['gan','mg','uni'],0,function(i){D.met=['gan','mg','uni'][i];renderDash()},function(x){return {gan:'Ganancia',mg:'Margen',uni:'Unidades'}[x]});
+$('d-cli').innerHTML='<option value="">Todos</option>'+CLIENTS.map(function(c){return '<option>'+c+'</option>'}).join('');
+$('d-cli').addEventListener('input',function(){D.cli=this.value;renderDash()});
+var MT={gan:'Ganancia',mg:'Margen',uni:'Unidades'};
+
+function agg(list,key){var m={};list.forEach(function(o){var k=key(o);var a=m[k]||(m[k]={gan:0,neto:0,uni:0,n:0});a.gan+=o.gan;a.neto+=o.neto;a.uni+=o.qty;a.n++});return m}
+function val(a){return D.met==='gan'?a.gan:D.met==='mg'?(a.neto?a.gan/a.neto*100:0):a.uni}
+function vf(v){return D.met==='gan'?compact(v):D.met==='mg'?pct(v,1):Math.round(v)+' u.'}
+function selectProd(id){D.sel=(D.sel===id?null:id);renderDash()}
+
+function hbars(el,items,opt){
+  items.sort(function(a,b){return b.v-a.v});
+  var RH=52, max=Math.max.apply(null,items.map(function(x){return x.v}).concat([0]))||1;
+  el.style.height=(items.length?items.length*RH:70)+'px';
+  var keep={};
+  var em=el.querySelector('.empty'); if(em) em.remove();
+  if(!items.length){[].forEach.call(el.querySelectorAll('.hr'),function(r){r.remove()});var d=document.createElement('p');d.className='empty';d.textContent='Sin operaciones para este filtro.';el.appendChild(d);return}
+  items.forEach(function(it,i){
+    var key=String(it.key), r=el.querySelector('[data-key="'+key+'"]');
+    if(!r){
+      r=document.createElement(opt.click?'button':'div');r.className='hr';r.dataset.key=key;
+      if(opt.click){r.type='button';r.onclick=function(){opt.click(it.key)}}
+      r.innerHTML='<span class="l"></span><span class="v"></span><span class="t"><i></i></span>';
+      r.style.transform='translateY('+(i*RH)+'px)';r.style.opacity='0';el.appendChild(r);
+    }
+    keep[key]=1;
+    r.querySelector('.l').textContent=it.label;r.querySelector('.v').textContent=vf(it.v);
+    r.classList.toggle('top',i===0&&opt.sel==null);
+    r.classList.toggle('sel',opt.sel!=null&&String(opt.sel)===key);
+    r.classList.toggle('dim',opt.sel!=null&&String(opt.sel)!==key);
+    if(opt.click) r.setAttribute('aria-pressed',String(opt.sel!=null&&String(opt.sel)===key));
+    (function(r,i,w){later(function(){r.style.opacity='';r.style.transform='translateY('+(i*RH)+'px)';r.querySelector('i').style.width=w+'%'})})(r,i,Math.max(0,it.v)/max*100);
+  });
+  [].forEach.call(el.querySelectorAll('.hr'),function(r){if(!keep[r.dataset.key]) r.remove()});
+}
+
+function svgW(svg){var w=Math.round(svg.getBoundingClientRect().width)||520;return Math.max(300,Math.min(640,w))}
+
+function scatter(svg,items){
+  var W=svgW(svg), H=Math.round(Math.min(400,Math.max(310,W*.64))), X0=40,X1=W-12,Y0=24,Y1=H-46, small=W<480;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  if(!svg._init){svg.innerHTML='<g class="axes"></g><g class="dots"></g>';svg._init=1}
+  var axes=svg.querySelector('.axes'), dots=svg.querySelector('.dots');
+  if(!items.length){axes.innerHTML='<text x="'+X0+'" y="60">Sin operaciones para este filtro.</text>';dots.innerHTML='';return}
+  var mx=Math.max.apply(null,items.map(function(d){return d.uni}))*1.15||1;
+  var ys=items.map(function(d){return d.mg}), lo=Math.floor(Math.min.apply(null,ys)-3), hi=Math.ceil(Math.max.apply(null,ys)+3);
+  if(hi-lo<10){var c=(hi+lo)/2;lo=Math.floor(c-5);hi=Math.ceil(c+5)}
+  var sx=function(v){return X0+v/mx*(X1-X0)}, sy=function(v){return Y1-(v-lo)/(hi-lo)*(Y1-Y0)};
+  var ax=items.reduce(function(a,d){return a+d.uni},0)/items.length, ay=items.reduce(function(a,d){return a+d.mg},0)/items.length;
+  var s='';
+  for(var j=0;j<=4;j++){var v=lo+(hi-lo)*j/4, y=sy(v);s+='<line class="ax" x1="'+X0+'" x2="'+X1+'" y1="'+y+'" y2="'+y+'"/><text x="'+(X0-8)+'" y="'+(y+4)+'" text-anchor="end">'+Math.round(v)+'%</text>'}
+  s+='<text x="'+X1+'" y="'+(Y1+30)+'" text-anchor="end">Unidades vendidas →</text><text x="'+X0+'" y="'+(Y1+30)+'">0</text>';
+  s+='<line class="q" x1="'+sx(ax)+'" x2="'+sx(ax)+'" y1="'+Y0+'" y2="'+Y1+'"/><line class="q" x1="'+X0+'" x2="'+X1+'" y1="'+sy(ay)+'" y2="'+sy(ay)+'"/>';
+  s+='<text class="ql" x="'+(X1-4)+'" y="'+(Y0+12)+'" text-anchor="end">Estrellas</text><text class="ql" x="'+(X0+8)+'" y="'+(Y0+12)+'">Nicho rentable</text><text class="ql" x="'+(X1-4)+'" y="'+(Y1-10)+'" text-anchor="end">Volumen</text><text class="ql" x="'+(X0+8)+'" y="'+(Y1-10)+'">Revisar</text>';
+  axes.innerHTML=s;
+  var gmax=Math.max.apply(null,items.map(function(d){return Math.max(d.gan,0)}))||1;
+  var top=items.reduce(function(a,d){return d.gan>a.gan?d:a},items[0]);
+  /* posiciones + etiquetas sin superposición */
+  var pos=items.map(function(d){return {d:d,x:sx(d.uni),y:sy(d.mg),r:(small?6:7)+Math.sqrt(Math.max(d.gan,0)/gmax)*(small?11:15)}});
+  var boxes=pos.map(function(p){return [p.x-p.r,p.y-p.r,p.x+p.r,p.y+p.r]});
+  for(var jj=0;jj<=4;jj++){var yy=sy(lo+(hi-lo)*jj/4);boxes.push([0,yy-9,X0-4,yy+7])}
+  boxes.push([X1-80,Y0,X1,Y0+16],[X0+4,Y0,X0+110,Y0+16],[X1-70,Y1-22,X1,Y1-4],[X0+4,Y1-22,X0+70,Y1-4]);
+  function hit(b){return boxes.some(function(o){return b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1]})}
+  pos.slice().sort(function(a,b){return b.d.gan-a.d.gan}).forEach(function(p){
+    var lab=small?p.d.sh:p.d.label, tw=lab.length*6.7, r=p.r, cands=[];
+    [[r+6,4,'start'],[-(r+6),4,'end'],[0,-(r+7),'middle'],[0,r+16,'middle'],[r+4,-(r*.7+4),'start'],[r+4,r*.7+14,'start'],[-(r+4),-(r*.7+4),'end'],[-(r+4),r*.7+14,'end']].forEach(function(c){
+      var bx=c[2]==='start'?p.x+c[0]-2:c[2]==='end'?p.x+c[0]-tw-2:p.x-tw/2, by=p.y+c[1]-13;
+      cands.push({dx:c[0],dy:c[1],a:c[2],b:[bx,by,bx+tw+4,by+16]});
+    });
+    var ok=cands.filter(function(c){return c.b[0]>=2&&c.b[2]<=W-2&&c.b[1]>=Y0-6&&c.b[3]<=Y1+2});
+    var pick=ok.filter(function(c){return !hit(c.b)})[0]||ok[0]||cands[0];
+    p.lab=lab;p.l=pick;boxes.push(pick.b);
+  });
+  var keep={};
+  pos.forEach(function(p){
+    var d=p.d, key=String(d.key), g=dots.querySelector('[data-key="'+key+'"]');
+    if(!g){g=document.createElementNS(SVGNS,'g');g.setAttribute('class','dot');g.dataset.key=key;g.setAttribute('tabindex','0');g.setAttribute('role','button');
+      g.innerHTML='<circle r="0"></circle><text></text>';g.style.transform='translate('+p.x+'px,'+Y1+'px)';dots.appendChild(g);
+      g.addEventListener('click',function(){selectProd(d.key)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectProd(d.key)}});}
+    keep[key]=1;
+    var t=g.querySelector('text');
+    t.textContent=p.lab;t.setAttribute('x',p.l.dx);t.setAttribute('y',p.l.dy);t.setAttribute('text-anchor',p.l.a);
+    g.setAttribute('aria-label',d.label+': '+Math.round(d.uni)+' unidades, margen '+pct(d.mg,1));
+    var cls='dot'+(d===top&&D.sel==null?' top':'')+(D.sel!=null&&String(D.sel)===key?' sel':'')+(D.sel!=null&&String(D.sel)!==key?' dim':'');
+    g.setAttribute('class',cls);
+    (function(g,x,y,r){later(function(){g.style.transform='translate('+x+'px,'+y+'px)';var c=g.querySelector('circle');c.setAttribute('r',r);c.style.r=r+'px'})})(g,p.x,p.y,p.r);
+  });
+  [].forEach.call(dots.querySelectorAll('.dot'),function(g){if(!keep[g.dataset.key]) g.remove()});
+}
+
+function columns(svg,buckets){
+  var W=svgW(svg), H=236, X0=6,X1=W-6,Y0=34,Y1=H-44;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  var sig=W+'|'+buckets.map(function(b){return b.label}).join('|');
+  if(svg._sig!==sig){
+    var slot=(X1-X0)/buckets.length, bw=Math.min(64,slot*.58), s='<line class="ax" x1="'+X0+'" x2="'+X1+'" y1="'+Y1+'" y2="'+Y1+'"/>';
+    buckets.forEach(function(b,i){var cx=X0+slot*i+slot/2;s+='<g class="col'+(b.part?' part':'')+'"><rect class="b" x="'+(cx-bw/2)+'" y="'+Y0+'" width="'+bw+'" height="'+(Y1-Y0)+'" rx="5"/><text class="vv" x="'+cx+'" y="'+Y1+'" text-anchor="middle"></text><text x="'+cx+'" y="'+(Y1+24)+'" text-anchor="middle" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700">'+b.label+'</text></g>'});
+    svg.innerHTML=s;svg._sig=sig;
+  }
+  var vals=buckets.map(function(b){return b.v}), mx=Math.max.apply(null,vals.concat([0]))||1, ti=vals.indexOf(Math.max.apply(null,vals));
+  later(function(){
+    [].forEach.call(svg.querySelectorAll('.col'),function(g,i){
+      var k=Math.max(0,vals[i])/mx;g.classList.toggle('top',i===ti&&vals[i]>0);
+      g.querySelector('rect.b').style.transform='scaleY('+Math.max(k,.005)+')';
+      var t=g.querySelector('text.vv');t.textContent=vals[i]?vf(vals[i]):'—';t.style.transform='translateY('+(-(k*(Y1-Y0))-10)+'px)';
+    });
+  });
+}
+
+function renderDash(){
+  dashReady=true;
+  var cat=CATS[D.cat];
+  var base=OPS.filter(function(o){return o.days<D.per&&(cat==='Todas'||PRODUCTS[o.prod].cat===cat)&&(!D.cli||o.cli===D.cli)});
+  if(D.sel!=null&&!base.some(function(o){return o.prod===D.sel})) D.sel=null;
+  var list=D.sel==null?base:base.filter(function(o){return o.prod===D.sel});
+
+  /* chips */
+  var chips=[];
+  if(D.sel!=null) chips.push({t:'Producto: '+PRODUCTS[D.sel].n,f:function(){D.sel=null}});
+  if(D.cli) chips.push({t:'Cliente: '+D.cli,f:function(){D.cli='';$('d-cli').value=''}});
+  var ce=$('d-chips');ce.innerHTML='';
+  chips.forEach(function(c){var s=document.createElement('span');s.className='chip';s.innerHTML='<span></span><button type="button" aria-label="Quitar filtro">×</button>';s.firstChild.textContent=c.t;s.querySelector('button').onclick=function(){c.f();renderDash()};ce.appendChild(s)});
+
+  /* KPIs */
+  var t={gan:0,neto:0,uni:0};list.forEach(function(o){t.gan+=o.gan;t.neto+=o.neto;t.uni+=o.qty});
+  var K=function(k){return $('d-kpis').querySelector('[data-k="'+k+'"]')};
+  tween(K('neto'),t.neto,compact);tween(K('gan'),t.gan,compact);
+  tween(K('mg'),t.neto?t.gan/t.neto*100:0,function(v){return pct(v,1)});
+  tween(K('ops'),list.length,function(v){return String(Math.round(v))});
+
+  $('t-prod').textContent=MT[D.met]+' por producto';
+  $('t-cli').textContent=MT[D.met]+' por cliente';
+
+  var byP=agg(base,function(o){return o.prod});
+  hbars($('c-prod'),Object.keys(byP).map(function(k){return {key:+k,label:PRODUCTS[k].n,v:val(byP[k])}}),{click:selectProd,sel:D.sel});
+  scatter($('c-sc'),Object.keys(byP).map(function(k){var a=byP[k];return {key:+k,label:PRODUCTS[k].n,sh:PRODUCTS[k].sh,uni:a.uni,mg:a.neto?a.gan/a.neto*100:0,gan:a.gan}}));
+  var byC=agg(list,function(o){return o.cli});
+  hbars($('c-cli'),Object.keys(byC).map(function(k){return {key:k,label:k,v:val(byC[k])}}),{});
+
+  /* time buckets */
+  var now=new Date(), buckets=[];
+  if(D.per<=30){
+    $('t-time').textContent=MT[D.met]+' por semana';$('n-time').textContent='Semanas de los últimos 30 días';
+    for(var w=4;w>=0;w--){var d0=new Date(now.getTime()-(w*7+6)*864e5);buckets.push({lo:w*7,hi:w*7+6,label:d0.getDate()+' '+MONTHS[d0.getMonth()]})}
+    buckets.forEach(function(b){var a=agg(list.filter(function(o){return o.days>=b.lo&&o.days<=b.hi&&o.days<30}),function(){return 0})[0];b.v=a?val(a):0});
+  }else{
+    $('t-time').textContent=MT[D.met]+' por mes';
+    var start=new Date(now.getTime()-(D.per-1)*864e5), y=start.getFullYear(), m=start.getMonth();
+    while(y<now.getFullYear()||(y===now.getFullYear()&&m<=now.getMonth())){buckets.push({y:y,m:m,label:MONTHS[m]});m++;if(m>11){m=0;y++}}
+    var byM=agg(list,function(o){var d=new Date(now.getTime()-o.days*864e5);return d.getFullYear()+'-'+d.getMonth()});
+    buckets.forEach(function(b){var a=byM[b.y+'-'+b.m];b.v=a?val(a):0});
+    var lb=buckets[buckets.length-1];lb.part=true;
+    $('n-time').textContent='Barra clara: '+MONTHS[lb.m]+' en curso';
+  }
+  columns($('c-time'),buckets);
+}
+new IntersectionObserver(function(e,obs){if(e[e.length-1].isIntersecting){renderDash();obs.disconnect()}},{threshold:.08}).observe($('rentabilidad'));
+var rzT,lastW=window.innerWidth;window.addEventListener('resize',function(){clearTimeout(rzT);rzT=setTimeout(function(){if(dashReady&&window.innerWidth!==lastW){lastW=window.innerWidth;renderDash()}},250)});
+})();
+</script>
+</body>
+</html>
