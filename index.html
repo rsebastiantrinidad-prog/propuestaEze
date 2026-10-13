@@ -71,6 +71,17 @@ h1 em,h2 em{font-style:normal;color:var(--acc-t)}
 @keyframes floaty{50%{transform:translateY(8px)}}
 
 /* =========================================================
+   Scenes: fotos de fondo con tratamiento de marca
+   La foto va en escala de grises, se tiñe con el violeta de la marca
+   y un velo oscuro asegura la lectura. Las animaciones quedan encima.
+   ========================================================= */
+.has-scene{isolation:isolate}
+.scene-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;isolation:isolate;pointer-events:none;background:var(--night)}
+.scene-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);filter:grayscale(1) contrast(1.1);opacity:var(--img,.7);transform:var(--flip,none)}
+.scene-bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,var(--violet),var(--deep));mix-blend-mode:color;opacity:.85}
+.scene-bg::after{content:"";position:absolute;inset:0;z-index:2;background:var(--veil)}
+
+/* =========================================================
    Header
    ========================================================= */
 .hdr{position:fixed;inset:0 0 auto;z-index:60;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:16px;
@@ -122,6 +133,9 @@ h1 em,h2 em{font-style:normal;color:var(--acc-t)}
 .in .t-mark{opacity:1}
 .cue{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);display:none;flex-direction:column;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none}
 .cue i{width:1.5px;height:34px;background:linear-gradient(var(--aqua),transparent);animation:floaty 2.8s var(--ease) infinite}
+/* Escena 1 · el depósito */
+.hero .scene-bg{--pos:50% 55%;--img:.8;
+  --veil:linear-gradient(180deg,rgba(22,6,48,.8) 0%,rgba(22,6,48,.72) 55%,var(--night) 100%)}
 
 /* =========================================================
    2 · Negocio
@@ -158,6 +172,9 @@ h1 em,h2 em{font-style:normal;color:var(--acc-t)}
 .pains i{font-style:normal;font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:.9;color:var(--lila)}
 .pains b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,6.6vw,2.3rem);line-height:1;margin-bottom:8px}
 .pains p{color:var(--muted);font-weight:500}
+/* Escena 2 · el escritorio */
+#problema .scene-bg{--pos:30% 40%;--img:.75;
+  --veil:linear-gradient(180deg,rgba(50,15,106,.82) 0%,rgba(50,15,106,.88) 60%,rgba(50,15,106,.96) 100%)}
 
 /* =========================================================
    4 · Solución
@@ -375,6 +392,13 @@ button.hr{cursor:pointer}
 .steps.in::after{transform:scaleY(1)}
 .steps li{position:relative;z-index:1}
 .steps::before,.steps::after{z-index:0}
+/* Escena 3 · la conversación con el cliente (cabecera del cierre) */
+.sec.scene-top{padding:0}
+.scene-top .scene{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;min-height:min(86svh,680px);padding:calc(var(--header) + 40px) var(--gutter) 56px}
+.scene-top .scene-bg{--pos:50% 18%;--img:.85;
+  --veil:linear-gradient(0deg,rgba(22,6,48,.95) 0%,rgba(22,6,48,.72) 38%,rgba(22,6,48,.3) 100%)}
+.scene-top .scene .wrap{width:100%}
+.scene-top .after{padding:64px var(--gutter) 88px}
 .steps .n{position:absolute;left:-66px;top:-4px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--snow);box-shadow:inset 0 0 0 2px var(--violet);
   font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--violet)}
 .steps h3{color:var(--deep);margin-bottom:6px}
@@ -416,6 +440,10 @@ button.hr{cursor:pointer}
 @media (min-width:960px){
   :root{--gutter:56px;--header:68px}
   .sec{padding-top:calc(var(--header) + 72px);padding-bottom:120px}
+  .hero .scene-bg{--pos:50% 50%;
+    --veil:linear-gradient(90deg,rgba(22,6,48,.95) 0%,rgba(22,6,48,.86) 38%,rgba(22,6,48,.5) 100%),linear-gradient(180deg,transparent 70%,var(--night) 100%)}
+  .scene-top .scene{padding-bottom:72px}
+  .scene-top .after{padding-top:88px;padding-bottom:120px}
   .hdr nav{display:flex}
   .cue{display:flex}
   .prov .ph,.prov label{grid-template-columns:26px minmax(0,1fr) 78px 64px 88px;gap:8px}
@@ -472,7 +500,8 @@ button.hr{cursor:pointer}
 <main>
 
 <!-- ======================= 1 · HERO ======================= -->
-<section class="sec night hero" id="inicio">
+<section class="sec night hero has-scene" id="inicio">
+  <div class="scene-bg" aria-hidden="true"><img src="img/deposito.webp" alt="" width="1672" height="941" fetchpriority="high" decoding="async"></div>
   <div class="wrap hero-grid">
     <div>
       <div class="kicker rv" style="--d:0">Propuesta · Distribución de cubiertas</div>
@@ -522,7 +551,8 @@ button.hr{cursor:pointer}
 </section>
 
 <!-- ======================= 3 · PROBLEMA ======================= -->
-<section class="sec deep" id="problema">
+<section class="sec deep has-scene" id="problema">
+  <div class="scene-bg" aria-hidden="true"><img src="img/escritorio.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></div>
   <div class="wrap two">
     <div>
       <div class="kicker rv">El problema</div>
@@ -685,10 +715,15 @@ button.hr{cursor:pointer}
 </section>
 
 <!-- ======================= 7 · CIERRE ======================= -->
-<section class="sec snow" id="contacto">
-  <div class="wrap">
-    <div class="kicker rv">Próximos pasos</div>
-    <h2 class="rv" style="--d:1">Vos vendés. <em>El sistema ordena.</em></h2>
+<section class="sec snow scene-top" id="contacto">
+  <div class="scene night">
+    <div class="scene-bg" aria-hidden="true"><img src="img/asesor-cliente.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></div>
+    <div class="wrap">
+      <div class="kicker rv">Próximos pasos</div>
+      <h2 class="rv" style="--d:1">Vos vendés. <em>El sistema ordena.</em></h2>
+    </div>
+  </div>
+  <div class="after"><div class="wrap">
     <ol class="steps io">
       <li class="rv" style="--d:1"><span class="n">1</span><h3>Relevamiento</h3><p>Vemos cómo cotizás hoy, con qué proveedores y qué datos usás.</p></li>
       <li class="rv" style="--d:2"><span class="n">2</span><h3>Prototipo</h3><p>Armamos el sistema con tus listas de precios y clientes reales.</p></li>
@@ -699,7 +734,7 @@ button.hr{cursor:pointer}
       <p class="slogan">Agilizando tu tiempo importante.</p>
       <a class="site" href="https://www.drivenbypeople.io" target="_blank" rel="noopener">drivenbypeople.io<svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
     </div>
-  </div>
+  </div></div>
 </section>
 </main>
 
